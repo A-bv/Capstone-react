@@ -1,0 +1,128 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2761
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fnil\fcharset0 HelveticaNeue;\f1\fmodern\fcharset0 Courier-Bold;}
+{\colortbl;\red255\green255\blue255;\red24\green24\blue24;\red223\green225\blue226;}
+{\*\expandedcolortbl;;\cssrgb\c12157\c12157\c12157;\cssrgb\c89804\c90588\c90980;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs88 \cf2 \expnd0\expndtw0\kerning0
+Metadata cheat sheet\
+\pard\pardeftab720\partightenfactor0
+
+\fs28 \cf2 \
+\pard\pardeftab720\sa320\partightenfactor0
+
+\fs40 \cf2 HTML <meta> tags \
+\pard\pardeftab720\sa320\partightenfactor0
+
+\fs32 \cf2 Earlier in the course, you learned about meta tags and how you can leverage them to convey information to search engines to better categorize your pages. We recommend that you keep this cheat sheet handy when building your web applications. The structure of a meta tag is as follows.\
+\
+Name \
+The name of the property can be anything you like, although browsers usually expect a value they understand and can take an action upon. An example would be 
+\f1\b\fs30\fsmilli15200 \cb3 <meta name="author" content="name">
+\f0\b0\fs32 \cb1  to state the author of the page. \
+\
+Content \
+\
+The content field specifies the property's value. For example, you can use 
+\f1\b\fs30\fsmilli15200 \cb3 <meta name="language" content="english">
+\f0\b0\fs32 \cb1 , to specify the language of the webpage to search engines. \
+\
+Charset \
+\
+The charset is a special field that lets you specify the character encoding used for the page so that the browser can display it properly. The most frequently used is utf-8, and you would add it to your HTML header as follows: 
+\f1\b\fs30\fsmilli15200 \cb3 <meta charset="UTF-8">  
+\f0\b0\fs32 \cb1 \
+\
+HTTP-equiv \
+\
+This field stands for HTTP equivalent, and it\'92s used to simulate HTTP response headers. This is rare to see, and it\'92s recommended to use HTTP headers over HTML http-equiv meta tags. For example, the next tag would instruct the browser to refresh the page every 30 minutes: 
+\f1\b\fs30\fsmilli15200 \cb3 <meta http-equiv="refresh" content="30"> 
+\f0\b0\fs32 \cb1 \
+\
+\pard\pardeftab720\sa320\partightenfactor0
+
+\fs40 \cf2 Basic meta tags (meta tags For SEO) \
+\pard\pardeftab720\sa320\partightenfactor0
+
+\f1\b\fs30\fsmilli15200 \cf2 \cb3 <meta name="description"/>
+\f0\b0\fs32 \cb1  provides a brief description of the web page \
+\
+
+\f1\b\fs30\fsmilli15200 \cb3 <meta name=\'94title\'94/>
+\f0\b0\fs32 \cb1  specifies the title of the web page \
+\
+
+\f1\b\fs30\fsmilli15200 \cb3 <meta name="author" content="name">
+\f0\b0\fs32 \cb1  specifies the author of the web page  \
+\
+
+\f1\b\fs30\fsmilli15200 \cb3 <meta name="language" content="english">
+\f0\b0\fs32 \cb1  specifies the language of the web page \
+\
+\
+\
+
+\f1\b\fs30\fsmilli15200 \cb3 <meta name="robots" content="index,follow" />
+\f0\b0\fs32 \cb1  tells search engines how to crawl or index a certain page \
+\
+
+\f1\b\fs30\fsmilli15200 \cb3 <meta name="google"/>
+\f0\b0\fs32 \cb1  tells Google not to show the sitelinks search box for your page when showing search results \
+\
+
+\f1\b\fs30\fsmilli15200 \cb3 <meta name="googlebot" content=\'94notranslate\'94 />
+\f0\b0\fs32 \cb1  tells Google you don\'92t want to provide an automatic translation for your page if the user uses a different language  \
+\
+
+\f1\b\fs30\fsmilli15200 \cb3 <meta name="revised" content="Sunday, July 18th, 2010, 5:15 pm" />
+\f0\b0\fs32 \cb1  specifies the last modified date and time on which you have made certain changes \
+\
+
+\f1\b\fs30\fsmilli15200 \cb3 <meta name="rating" content="safe for kids">
+\f0\b0\fs32 \cb1  specifies the expected audience for your page \
+\
+
+\f1\b\fs30\fsmilli15200 \cb3 <meta name="copyright" content="Copyright 2022">
+\f0\b0\fs32 \cb1  specifies a Copyright \
+\
+\pard\pardeftab720\sa320\partightenfactor0
+
+\fs40 \cf2 <meta http-equiv="..."/> tags\
+\pard\pardeftab720\sa320\partightenfactor0
+
+\fs32 \cf2  
+\f1\b\fs30\fsmilli15200 \cb3 <meta http-equiv="content-type" content="text/html">
+\f0\b0\fs32 \cb1  specifies the format of the document returned by the server \
+\
+
+\f1\b\fs30\fsmilli15200 \cb3 <meta http-equiv="default-style"/>
+\f0\b0\fs32 \cb1   specifies the format of the styling document \
+\
+
+\f1\b\fs30\fsmilli15200 \cb3 <meta http-equiv="refresh"/>
+\f0\b0\fs32 \cb1  specifies the duration of the page before it\'92s considered stale \
+\
+
+\f1\b\fs30\fsmilli15200 \cb3 <meta http-equiv=\'94Content-language\'94/>
+\f0\b0\fs32 \cb1  specifies the language of the page \
+\
+
+\f1\b\fs30\fsmilli15200 \cb3 <meta http-equiv="Cache-Control" content="no-cache">
+\f0\b0\fs32 \cb1  instructs the browser how to cache your page \
+\pard\pardeftab720\sa320\partightenfactor0
+
+\fs40 \cf2 Responsive design/mobile meta tags \
+\pard\pardeftab720\partightenfactor0
+
+\f1\b\fs30\fsmilli15200 \cf2 \cb3 <meta name="format-detection" content="telephone=yes"/>
+\f0\b0\fs32 \cb1  indicates that telephone numbers should appear as hypertext links that can be clicked to make a phone call \
+\
+
+\f1\b\fs30\fsmilli15200 \cb3 <meta name="HandheldFriendly" content="true"/>
+\f0\b0\fs32 \cb1  specifies that the page can be properly visualized on mobile devices \
+\
+
+\f1\b\fs30\fsmilli15200 \cb3 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+\f0\b0\fs32 \cb1  specifies the area of the window in which web content can be seen}
