@@ -1,10 +1,9 @@
-/* Styles/header.css */
-
 .header {
     background-color: #2c5234; /* Dark green background color */
     padding: 20px;
     height: 300px; /* Ensure header has a fixed height */
     display: flex;
+    align-items: center; /* Center items vertically */
 }
 
 .header-left,
@@ -12,7 +11,7 @@
     flex: 1; /* Equal width for both left and right regions */
     display: flex;
     justify-content: center; /* Center content horizontally */
-    align-items: left; /* Center content vertically */
+    align-items: center; /* Center content vertically */
 }
 
 .header-text {
@@ -39,17 +38,35 @@
 }
 
 .header-image {
-    width: 250px; /* Fixed width for the image */
+    width: 300px; /* Fixed width for the image */
     height: 300px; /* Fixed height for the image */
     overflow: hidden; /* Hide overflowing content */
     border-radius: 10px; /* Rounded corners */
     display: flex; /* Center content */
     justify-content: center; /* Center content */
     align-items: center; /* Center content */
+    margin-left: 20px; /* Add margin to the left */
 }
 
 .header-img {
     max-width: 100%; /* Ensure image fills its container width-wise */
     height: auto; /* Allow height to adjust */
     border-radius: inherit; /* Inherit parent's border radius */
+}
+
+/* Media query for large screens */
+@media (min-width: 1200px) {
+    .header {
+        padding-left: 10%; /* Adjusted padding for left alignment */
+        padding-right: 10%; /* Adjusted padding for right alignment */
+    }
+
+    .header-left {
+        align-items: flex-start; /* Align items to the start on large screens */
+    }
+
+    .header-image {
+        margin-left: 0; /* Remove left margin on large screens */
+        margin-right: 20px; /* Add right margin on large screens */
+    }
 }

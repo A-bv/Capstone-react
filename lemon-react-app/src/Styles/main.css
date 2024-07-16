@@ -7,7 +7,7 @@
     grid-template-columns: repeat(3, 1fr); /* Three columns, equal width */
     gap: 20px; /* Gap between grid items */
     padding-bottom: 20px; /* Padding inside the section */
-    margin-bottom: 100px; /* Extra space for scrolling under the list */
+    margin-bottom: 0px; /* Extra space for scrolling under the list */
 }
 
 .article {
