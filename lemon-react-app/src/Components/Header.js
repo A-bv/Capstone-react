@@ -1,8 +1,6 @@
-// Components/Header.js
-
 import React from 'react';
-import '../Styles/header.css'; // Ensure header.css contains styles for .header
-import restaurantFood from '../Assets/restaurantFood.jpg'; // Import the image
+import '../Styles/header.css';
+import restaurantFood from '../Assets/restaurantFood.jpg';
 
 function Header() {
     return (
@@ -24,3 +22,4 @@ function Header() {
 }
 
 export default Header;
+
