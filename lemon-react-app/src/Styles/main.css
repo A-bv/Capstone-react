@@ -1,6 +1,36 @@
-/* main.css */
 .main-content {
     padding: 20px;
-    font-size: 1.2rem;
-    line-height: 1.6;
+}
+
+.article-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns, equal width */
+    gap: 20px; /* Gap between grid items */
+    padding-bottom: 20px; /* Padding inside the section */
+    margin-bottom: 100px; /* Extra space for scrolling under the list */
+}
+
+.article {
+    text-align: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
+
+.article-image {
+    width: 100%; /* Image width spanning the article width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px;
+    max-height: 120px; /* Maximum height of 300px */
+    object-fit: cover; /* Ensures image covers the area while maintaining aspect ratio */
+}
+
+.article h3 {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+.article p {
+    font-size: 0.9em;
+    color: #666;
 }
