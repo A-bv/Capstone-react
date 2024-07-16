@@ -1,43 +1,46 @@
 /* Styles/header.css */
 
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #f0f0f0; /* Example background color */
+    background-color: #2c5234; /* Dark green background color */
     padding: 20px;
+    height: 300px; /* Ensure header has a fixed height */
+    display: flex;
+}
+
+.header-left,
+.header-right {
+    flex: 1; /* Equal width for both left and right regions */
+    display: flex;
+    justify-content: center; /* Center content horizontally */
+    align-items: left; /* Center content vertically */
 }
 
 .header-text {
-    flex: 1; /* Take up remaining space */
     max-width: 400px; /* Maximum width for the text zone */
-}
-
-.text-content {
-    width: 100%; /* Ensure full width within max-width */
+    text-align: left; /* Align text to the left */
+    color: #f5d742; /* Yellow color for "Little Lemon" */
 }
 
 .header-text h1 {
     font-size: 2em;
-    margin-bottom: 3px; /* Adjusted margin bottom to reduce space */
+    margin-bottom: 5px; /* Adjusted margin bottom */
 }
 
 .header-text h2 {
     font-size: 1.5em;
     color: #888;
-    margin-bottom: 8px; /* Adjusted margin bottom to reduce space */
+    margin-bottom: 8px; /* Adjusted margin bottom */
 }
 
 .header-text p {
     font-size: 1em;
-    color: #666;
+    color: #fff; /* White color for body text */
     line-height: 1.5; /* Adjust line height for readability */
 }
 
 .header-image {
-    width: 200px; /* Fixed width for the image */
+    width: 250px; /* Fixed width for the image */
     height: 300px; /* Fixed height for the image */
-    position: relative; /* Ensure proper centering */
     overflow: hidden; /* Hide overflowing content */
     border-radius: 10px; /* Rounded corners */
     display: flex; /* Center content */
@@ -46,10 +49,7 @@
 }
 
 .header-img {
-    max-width: 100%; /* Maximum width of the image */
-    max-height: 100%; /* Maximum height of the image */
-    width: auto; /* Allow the width to adjust */
-    height: auto; /* Allow the height to adjust */
+    max-width: 100%; /* Ensure image fills its container width-wise */
+    height: auto; /* Allow height to adjust */
     border-radius: inherit; /* Inherit parent's border radius */
 }
-
