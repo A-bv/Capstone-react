@@ -1,34 +1,39 @@
-/* Styles/nav.css */
+/* nav.css */
 
 .navbar {
+    background-color: #333; /* Dark green background color */
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
 }
 
 .nav-logo {
-    max-height: 50px; /* Adjust the height of the logo as needed */
+    margin-left: 20px;
+    max-width: 100px; /* Adjust the max-width as needed */
 }
 
 .nav-items {
     list-style-type: none;
-    padding: 0;
-    margin: 0;
     display: flex;
+    gap: 20px;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-items li {
-    margin-left: 20px; /* Adjust spacing between menu items */
+    margin: 0;
 }
 
-.nav-items li:first-child {
-    margin-left: 0; /* Remove margin from the first item */
-}
-
-.nav-items li a {
-    color: #fff;
+.nav-items a {
     text-decoration: none;
+    color: #fff;
+    font-size: 1.1em;
+    padding: 10px 15px;
+    transition: all 0.3s ease;
+}
+
+.nav-items a:hover {
+    background-color: #5a9c69; /* Darker green on hover */
+    border-radius: 5px;
 }
