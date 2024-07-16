@@ -1,10 +1,10 @@
 import React from 'react';
-import '../Styles/main.css'; // Import CSS for Main
-import brochetteImage from '../Assets/brochette.jpg';
-import pitaImage from '../Assets/pita.jpg';
-import greekImage from '../Assets/greek.jpg';
-import humusImage from '../Assets/humus.jpg';
-import dessertImage from '../Assets/dessert.jpg';
+import '../styles/main.css'; // Import CSS for Main
+import brochetteImage from '../assets/brochette.jpg';
+import pitaImage from '../assets/pita.jpg';
+import greekImage from '../assets/greek.jpg';
+import humusImage from '../assets/humus.jpg';
+import dessertImage from '../assets/dessert.jpg';
 
 function Main() {
     return (
