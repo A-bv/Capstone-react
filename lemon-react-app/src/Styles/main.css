@@ -10,6 +10,14 @@
     margin-bottom: 100px; /* Extra space for scrolling under the list */
 }
 
+/* Media query for large screens */
+@media (min-width: 1200px) {
+    .article-section {
+        margin-left: 15%; /* Adjust margin as needed */
+        margin-right: 15%; /* Adjust margin as needed */
+    }
+}
+
 .article {
     text-align: center;
     padding: 10px;
