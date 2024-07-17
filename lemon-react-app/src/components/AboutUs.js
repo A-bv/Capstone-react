@@ -5,13 +5,6 @@ import '../styles/aboutus.css'; // Import CSS for About Us
 import restaurantInterior from '../assets/restaurantInterior.jpg'; // Example image
 
 function AboutUs() {
-    const scrollToAboutUs = () => {
-        const aboutUsSection = document.getElementById('about-us-section');
-        if (aboutUsSection) {
-            aboutUsSection.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
-
     return (
         <section id="about-us-section" className="about-us-section">
             <div className="about-us-content">
