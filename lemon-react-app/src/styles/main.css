@@ -1,0 +1,44 @@
+.main-content {
+    padding: 20px;
+}
+
+.article-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns, equal width */
+    gap: 20px; /* Gap between grid items */
+    padding-bottom: 20px; /* Padding inside the section */
+    margin-bottom: 0px; /* Extra space for scrolling under the list */
+}
+
+.article {
+    text-align: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
+
+.article-image {
+    width: 100%; /* Image width spanning the article width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px;
+    max-height: 120px; /* Maximum height of 300px */
+    object-fit: cover; /* Ensures image covers the area while maintaining aspect ratio */
+}
+
+.article h3 {
+    margin-top: 10px;
+    font-size: 1.2em;
+}
+
+.article p {
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* Media query for large screens */
+@media (min-width: 1200px) {
+    .main-content {
+        margin-left: 10%; /* Adjust margin as needed */
+        margin-right: 10%; /* Adjust margin as needed */
+    }
+}
