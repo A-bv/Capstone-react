@@ -1,9 +1,10 @@
-// Nav.js
+// src/components/Nav.js
 
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/nav.css';
 import logo from '../assets/Logo.svg';
-import ContactModal from './ContactModal'; // Import ContactModal component
+import ContactModal from './ContactModal';
 
 function Nav({ aboutUsRef }) {
     const [showModal, setShowModal] = useState(false);
@@ -26,9 +27,9 @@ function Nav({ aboutUsRef }) {
         <nav className="navbar">
             <img src={logo} alt="Logo" className="nav-logo" />
             <ul className="nav-items">
-                <li><a href="#home">Home</a></li>
+                <li><Link to="/">Home</Link></li>
                 <li><a href="#about" onClick={handleScrollToAboutUs}>About</a></li>
-                <li><a href="#services">Services</a></li>
+                <li><Link to="/booking">Booking</Link></li>
                 <li><a href="#contact" onClick={handleContactClick}>Contact</a></li>
             </ul>
             {showModal && <ContactModal onClose={closeModal} />}
