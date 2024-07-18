@@ -52,8 +52,6 @@
     width: calc(100% - 16px); /* Adjust for padding */
 }
 
-/* Add to src/styles/bookingform.css */
-
 .error-message {
     color: red;
     font-size: 0.875em;
