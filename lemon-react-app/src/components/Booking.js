@@ -3,7 +3,7 @@
 import React from 'react';
 import BookingHeader from './BookingHeader';
 import BookingForm from './BookingForm';
-import '../styles/booking.css'; // Ensure the CSS file is imported for styling
+import '../styles/booking.css';
 
 function Booking() {
     return (

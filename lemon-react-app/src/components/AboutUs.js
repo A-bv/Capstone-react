@@ -1,8 +1,8 @@
 // AboutUs.js
 
 import React from 'react';
-import '../styles/aboutus.css'; // Import CSS for About Us
-import restaurantInterior from '../assets/restaurantInterior.jpg'; // Example image
+import '../styles/aboutus.css';
+import restaurantInterior from '../assets/restaurantInterior.jpg';
 
 function AboutUs() {
     return (

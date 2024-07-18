@@ -1,33 +1,45 @@
 // src/components/BookingForm.js
 
-import React from 'react';
-import '../styles/booking.css'; // Ensure the CSS file is imported for styling
+import React, { useState } from 'react';
+import '../styles/booking.css';
 
 function BookingForm() {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        date: '',
+        time: '',
+        guests: 1,
+    });
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Handle form submission logic
+        console.log('Form Data:', formData);
+    };
+
     return (
         <section className="booking-form-section">
             <h2>Reservation Form</h2>
-            <form className="booking-form">
-                <div className="form-group">
-                    <label htmlFor="name">Name:</label>
-                    <input type="text" id="name" name="name" required />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="email">Email:</label>
-                    <input type="email" id="email" name="email" required />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="date">Date:</label>
-                    <input type="date" id="date" name="date" required />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="time">Time:</label>
-                    <input type="time" id="time" name="time" required />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="guests">Number of Guests:</label>
-                    <input type="number" id="guests" name="guests" required />
-                </div>
+            <form className="booking-form" onSubmit={handleSubmit}>
+                {Object.keys(formData).map((key) => (
+                    <div className="form-group" key={key}>
+                        <label htmlFor={key}>{key.charAt(0).toUpperCase() + key.slice(1)}:</label>
+                        <input
+                            type={key === 'email' ? 'email' : key === 'guests' ? 'number' : 'text'}
+                            id={key}
+                            name={key}
+                            value={formData[key]}
+                            onChange={handleChange}
+                            required
+                        />
+                    </div>
+                ))}
                 <button type="submit" className="submit-btn">Reserve</button>
             </form>
         </section>
@@ -35,4 +47,3 @@ function BookingForm() {
 }
 
 export default BookingForm;
-

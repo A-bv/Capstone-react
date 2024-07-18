@@ -25,7 +25,6 @@ function App() {
     );
 }
 
-// Home page component for nested routing
 function HomePage({ aboutUsRef }) {
     return (
         <>
