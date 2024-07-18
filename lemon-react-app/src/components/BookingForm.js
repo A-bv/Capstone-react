@@ -3,7 +3,36 @@
 import React, { useState } from 'react';
 import '../styles/bookingform.css'; // Adjust the path as necessary
 
-function BookingForm() {
+const InputField = ({ label, id, name, type, value, onChange, required, min, max }) => (
+    <>
+        <label htmlFor={id}>{label}:</label>
+        <input
+            type={type}
+            id={id}
+            name={name}
+            value={value}
+            onChange={onChange}
+            required={required}
+            min={min}
+            max={max}
+        />
+    </>
+);
+
+const SelectField = ({ label, id, name, value, onChange, options }) => (
+    <>
+        <label htmlFor={id}>{label}:</label>
+        <select id={id} name={name} value={value} onChange={onChange} required>
+            {options.map((option, index) => (
+                <option key={index} value={option}>
+                    {option}
+                </option>
+            ))}
+        </select>
+    </>
+);
+
+const BookingForm = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -28,57 +57,50 @@ function BookingForm() {
         <section className="booking-form-section">
             <h2>Reservation Form</h2>
             <form className="booking-form" onSubmit={handleSubmit}>
-                <label htmlFor="name">Name:</label>
-                <input
-                    type="text"
+                <InputField
+                    label="Name"
                     id="name"
                     name="name"
+                    type="text"
                     value={formData.name}
                     onChange={handleChange}
                     required
                 />
 
-                <label htmlFor="email">Email:</label>
-                <input
-                    type="email"
+                <InputField
+                    label="Email"
                     id="email"
                     name="email"
+                    type="email"
                     value={formData.email}
                     onChange={handleChange}
                     required
                 />
 
-                <label htmlFor="res-date">Choose date:</label>
-                <input
-                    type="date"
+                <InputField
+                    label="Choose date"
                     id="res-date"
                     name="date"
+                    type="date"
                     value={formData.date}
                     onChange={handleChange}
                     required
                 />
 
-                <label htmlFor="res-time">Choose time:</label>
-                <select
+                <SelectField
+                    label="Choose time"
                     id="res-time"
                     name="time"
                     value={formData.time}
                     onChange={handleChange}
-                    required
-                >
-                    <option value="17:00">17:00</option>
-                    <option value="18:00">18:00</option>
-                    <option value="19:00">19:00</option>
-                    <option value="20:00">20:00</option>
-                    <option value="21:00">21:00</option>
-                    <option value="22:00">22:00</option>
-                </select>
+                    options={['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']}
+                />
 
-                <label htmlFor="guests">Number of guests:</label>
-                <input
-                    type="number"
+                <InputField
+                    label="Number of guests"
                     id="guests"
                     name="guests"
+                    type="number"
                     value={formData.guests}
                     onChange={handleChange}
                     min="1"
@@ -86,22 +108,19 @@ function BookingForm() {
                     required
                 />
 
-                <label htmlFor="occasion">Occasion:</label>
-                <select
+                <SelectField
+                    label="Occasion"
                     id="occasion"
                     name="occasion"
                     value={formData.occasion}
                     onChange={handleChange}
-                    required
-                >
-                    <option value="Birthday">Birthday</option>
-                    <option value="Anniversary">Anniversary</option>
-                </select>
+                    options={['Birthday', 'Anniversary']}
+                />
 
                 <input type="submit" value="Make Your Reservation" className="submit-btn" />
             </form>
         </section>
     );
-}
+};
 
 export default BookingForm;
