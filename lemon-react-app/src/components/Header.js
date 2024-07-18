@@ -2,21 +2,20 @@
 
 import React from 'react';
 import '../styles/header.css';
-import restaurantFood from '../assets/restaurantFood.jpg';
 
-function Header() {
+function Header({ title, subtitle, description, imageSrc }) {
     return (
         <header className="header">
             <div className="header-left">
                 <div className="header-text">
-                    <h1>Little Lemon</h1>
-                    <h2>Chicago</h2>
-                    <p>Welcome to our delightful restaurant located in the heart of Chicago. Enjoy our fresh and delicious meals prepared with love and care.</p>
+                    <h1>{title}</h1>
+                    <h2>{subtitle}</h2>
+                    <p>{description}</p>
                 </div>
             </div>
             <div className="header-right">
                 <div className="header-image">
-                    <img src={restaurantFood} alt="Banner" className="header-img" />
+                    <img src={imageSrc} alt="Banner" className="header-img" />
                 </div>
             </div>
         </header>

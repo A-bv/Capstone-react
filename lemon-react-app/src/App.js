@@ -9,6 +9,7 @@ import Nav from './components/Nav';
 import Testimonials from './components/Testimonials';
 import AboutUs from './components/AboutUs';
 import Booking from './components/Booking';
+import restaurantFood from './assets/restaurantFood.jpg';
 
 function App() {
     const aboutUsRef = useRef(null);
@@ -18,22 +19,43 @@ function App() {
             <Nav aboutUsRef={aboutUsRef} />
             <Routes>
                 <Route path="/" element={<HomePage aboutUsRef={aboutUsRef} />} />
-                <Route path="/booking" element={<Booking />} />
+                <Route path="/booking" element={<BookingPage />} />
             </Routes>
             <Footer />
         </div>
     );
 }
 
+// Home page component for nested routing
 function HomePage({ aboutUsRef }) {
     return (
         <>
-            <Header />
+            <Header
+                title="Little Lemon"
+                subtitle="Chicago"
+                description="Welcome to our delightful restaurant located in the heart of Chicago. Enjoy our fresh and delicious meals prepared with love and care."
+                imageSrc={restaurantFood}
+            />
             <Main />
             <Testimonials />
             <div ref={aboutUsRef}>
                 <AboutUs />
             </div>
+        </>
+    );
+}
+
+// Booking page component for nested routing
+function BookingPage() {
+    return (
+        <>
+            <Header
+                title="Book a Table"
+                subtitle="Reserve your table at Little Lemon today!"
+                description="Reserve your table at Little Lemon today!"
+                imageSrc={restaurantFood}
+            />
+            <Booking />
         </>
     );
 }
