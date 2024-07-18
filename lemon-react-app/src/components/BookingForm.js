@@ -3,8 +3,8 @@
 import React, { useState } from 'react';
 import '../styles/bookingform.css'; // Adjust the path as necessary
 
-const InputField = ({ label, id, name, type, value, onChange, required, min, max }) => (
-    <>
+const InputField = ({ label, id, name, type, value, onChange, required, min, max, error }) => (
+    <div className="form-group">
         <label htmlFor={id}>{label}:</label>
         <input
             type={type}
@@ -16,11 +16,12 @@ const InputField = ({ label, id, name, type, value, onChange, required, min, max
             min={min}
             max={max}
         />
-    </>
+        {error && <p className="error-message">{error}</p>}
+    </div>
 );
 
-const SelectField = ({ label, id, name, value, onChange, options }) => (
-    <>
+const SelectField = ({ label, id, name, value, onChange, options, error }) => (
+    <div className="form-group">
         <label htmlFor={id}>{label}:</label>
         <select id={id} name={name} value={value} onChange={onChange} required>
             {options.map((option, index) => (
@@ -29,7 +30,8 @@ const SelectField = ({ label, id, name, value, onChange, options }) => (
                 </option>
             ))}
         </select>
-    </>
+        {error && <p className="error-message">{error}</p>}
+    </div>
 );
 
 const BookingForm = () => {
@@ -42,6 +44,53 @@ const BookingForm = () => {
         occasion: 'Birthday', // Default occasion
     });
 
+    const [errors, setErrors] = useState({
+        name: '',
+        email: '',
+        date: '',
+        guests: '',
+    });
+
+    const validateForm = () => {
+        let isValid = true;
+        const newErrors = { ...errors };
+
+        // Name validation
+        if (formData.name.trim() === '') {
+            newErrors.name = 'Name is required.';
+            isValid = false;
+        } else {
+            newErrors.name = '';
+        }
+
+        // Email validation
+        if (!/\S+@\S+\.\S+/.test(formData.email)) {
+            newErrors.email = 'Email is invalid.';
+            isValid = false;
+        } else {
+            newErrors.email = '';
+        }
+
+        // Date validation
+        if (formData.date === '') {
+            newErrors.date = 'Date is required.';
+            isValid = false;
+        } else {
+            newErrors.date = '';
+        }
+
+        // Guests validation
+        if (formData.guests < 1 || formData.guests > 10) {
+            newErrors.guests = 'Number of guests must be between 1 and 10.';
+            isValid = false;
+        } else {
+            newErrors.guests = '';
+        }
+
+        setErrors(newErrors);
+        return isValid;
+    };
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
@@ -49,8 +98,28 @@ const BookingForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log('Form Data:', formData);
-        // Handle form submission logic (e.g., API call)
+        if (validateForm()) {
+            // Handle form submission logic (e.g., API call)
+            alert('Your reservation has been confirmed!'); // Display confirmation alert
+            
+            // Reset form values
+            setFormData({
+                name: '',
+                email: '',
+                date: '',
+                time: '17:00',
+                guests: 1,
+                occasion: 'Birthday',
+            });
+
+            // Clear errors
+            setErrors({
+                name: '',
+                email: '',
+                date: '',
+                guests: '',
+            });
+        }
     };
 
     return (
@@ -65,6 +134,7 @@ const BookingForm = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
+                    error={errors.name}
                 />
 
                 <InputField
@@ -75,6 +145,7 @@ const BookingForm = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
+                    error={errors.email}
                 />
 
                 <InputField
@@ -85,6 +156,7 @@ const BookingForm = () => {
                     value={formData.date}
                     onChange={handleChange}
                     required
+                    error={errors.date}
                 />
 
                 <SelectField
@@ -106,6 +178,7 @@ const BookingForm = () => {
                     min="1"
                     max="10"
                     required
+                    error={errors.guests}
                 />
 
                 <SelectField

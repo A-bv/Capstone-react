@@ -52,6 +52,32 @@
     width: calc(100% - 16px); /* Adjust for padding */
 }
 
+/* Add to src/styles/bookingform.css */
+
+.error-message {
+    color: red;
+    font-size: 0.875em;
+    margin-top: 0.25em;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
 /* Optional: Media query for responsiveness */
 @media (max-width: 600px) {
     .booking-form-section {
