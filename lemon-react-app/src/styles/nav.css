@@ -6,6 +6,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative; /* Added to position the menu toggle button */
 }
 
 .nav-logo {
@@ -36,4 +37,42 @@
 .nav-items a:hover {
     background-color: #5a9c69; /* Darker green on hover */
     border-radius: 5px;
+}
+
+/* Mobile Menu Styles */
+.menu-toggle {
+    display: none; /* Hide menu toggle button by default */
+    background-color: #333;
+    border: none;
+    color: #fff;
+    font-size: 1.5em;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+    .nav-items {
+        display: none; /* Hide menu items by default */
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px; /* Adjust based on your header height */
+        left: 0;
+        background-color: #333;
+        align-items: center; /* Center align items horizontally */
+        padding: 0;
+    }
+
+    .nav-items.active {
+        display: flex; /* Show menu items when active */
+    }
+
+    .nav-items li {
+        margin: 10px 0; /* Add spacing between items */
+    }
+
+    .menu-toggle {
+        display: block; /* Show menu toggle button */
+    }
 }

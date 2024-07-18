@@ -1,5 +1,3 @@
-// src/components/Nav.js
-
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import '../styles/nav.css';
@@ -8,6 +6,7 @@ import ContactModal from './ContactModal';
 
 function Nav({ aboutUsRef }) {
     const [showModal, setShowModal] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false); // New state for menu toggle
     const navigate = useNavigate();
 
     const handleContactClick = () => {
@@ -39,10 +38,23 @@ function Nav({ aboutUsRef }) {
         setShowModal(false);
     };
 
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen); // Toggle the menu open state
+    };
+
     return (
         <nav className="navbar">
             <img src={logo} alt="Logo" className="nav-logo" />
-            <ul className="nav-items">
+            {/* Toggle button for mobile view */}
+            <button 
+                className="menu-toggle" 
+                onClick={toggleMenu} 
+                aria-label="Toggle menu"
+            >
+                ☰
+            </button>
+            {/* Navigation items */}
+            <ul className={`nav-items ${isMenuOpen ? 'active' : ''}`}>
                 <li><Link to="/">Home</Link></li>
                 <li><Link to="/booking">Booking</Link></li>
                 <li><a href="#about" onClick={handleNavigationToAboutUs}>About</a></li>
@@ -54,4 +66,3 @@ function Nav({ aboutUsRef }) {
 }
 
 export default Nav;
-

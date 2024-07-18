@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Basic SEO meta tags -->
-  <meta name="description"
-    content="Welcome to Little Lemon - Chicago's favorite spot for fresh and delicious meals. Explore our menu and enjoy a taste of perfection in every bite.">
-  <title>Little Lemon</title>
+    <!-- Basic SEO meta tags -->
+    <meta name="description" content="Welcome to Little Lemon - Chicago's favorite spot for fresh and delicious meals. Explore our menu and enjoy a taste of perfection in every bite.">
+    <title>Little Lemon</title>
 
-  <!-- Open Graph meta tags for social media -->
-  <meta property="og:title" content="Little Lemon - Fresh and Delicious Meals in Chicago">
-  <meta property="og:description"
-    content="Welcome to Little Lemon - Chicago's favorite spot for fresh and delicious meals. Explore our menu and enjoy a taste of perfection in every bite.">
-  <meta property="og:image" content="your-image-url">
+    <!-- Open Graph meta tags for social media -->
+    <meta property="og:title" content="Little Lemon - Fresh and Delicious Meals in Chicago">
+    <meta property="og:description" content="Welcome to Little Lemon - Chicago's favorite spot for fresh and delicious meals. Explore our menu and enjoy a taste of perfection in every bite.">
+    <meta property="og:image" content="your-image-url">
 
-  <!-- Link to your custom CSS -->
-  <link rel="stylesheet" href="%PUBLIC_URL%/index.css">
+    <!-- Link to your custom CSS -->
+    <link rel="stylesheet" href="%PUBLIC_URL%/index.css">
+    <link rel="stylesheet" href="%PUBLIC_URL%/nav.css"> <!-- Add your nav.css here -->
 
-  <!-- Default create-react-app generated meta tags -->
-  <link rel="icon" href="%PUBLIC_URL%/favicon.ico">
-  <meta name="theme-color" content="#000000">
-  <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png">
-  <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
+    <!-- Default create-react-app generated meta tags -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico">
+    <meta name="theme-color" content="#000000">
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png">
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
 
-  <!-- Any additional meta tags or external scripts can be added here -->
-
+    <!-- Any additional meta tags or external scripts can be added here -->
 </head>
-
 <body>
-  <div id="root"></div>
-  <script src="%PUBLIC_URL%/index.js"></script>
+    <div id="root">
+        <nav class="navbar">
+            <div class="nav-logo">
+                <h1>Little Lemon</h1>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                ☰
+            </button>
+            <ul class="nav-items">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+    <script src="%PUBLIC_URL%/index.js"></script>
+    <script src="%PUBLIC_URL%/script.js"></script> <!-- Add your script.js here -->
 </body>
-
 </html>
