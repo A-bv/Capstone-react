@@ -1,17 +1,16 @@
-// src/components/Header.js
+// src/components/BookingHeader.js
 
 import React from 'react';
-import '../styles/header.css';
-import restaurantFood from '../assets/restaurantFood.jpg';
+import restaurantFood from '../assets/restaurantFood.jpg'; // Use a booking-specific image if available
+import '../styles/header.css'; // Reuse the same header styles
 
-function Header() {
+function BookingHeader() {
     return (
         <header className="header">
             <div className="header-left">
                 <div className="header-text">
-                    <h1>Little Lemon</h1>
-                    <h2>Chicago</h2>
-                    <p>Welcome to our delightful restaurant located in the heart of Chicago. Enjoy our fresh and delicious meals prepared with love and care.</p>
+                    <h1>Book a Table</h1>
+                    <p>Reserve your table at Little Lemon today!</p>
                 </div>
             </div>
             <div className="header-right">
@@ -23,4 +22,4 @@ function Header() {
     );
 }
 
-export default Header;
+export default BookingHeader;

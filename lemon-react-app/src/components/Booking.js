@@ -1,15 +1,17 @@
 // src/components/Booking.js
 
 import React from 'react';
+import BookingHeader from './BookingHeader';
+import BookingForm from './BookingForm';
+import '../styles/booking.css'; // Ensure the CSS file is imported for styling
 
 function Booking() {
     return (
-        <div>
-            <h1>Booking Page</h1>
-            <section>
-                <h2>Book your service</h2>
-                <p>This is the booking section where users can book services.</p>
-            </section>
+        <div className="booking-page">
+            <BookingHeader />
+            <main className="booking-main">
+                <BookingForm />
+            </main>
         </div>
     );
 }
