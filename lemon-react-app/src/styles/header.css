@@ -1,10 +1,11 @@
+/* src/styles/header.css */
+
 .header {
     background-color: #2c5234; /* Dark green background color */
     padding: 20px;
     height: 300px; /* Ensure header has a fixed height */
     display: flex;
     align-items: center; /* Center items vertically */
-    justify-content: space-between; /* Distribute space between left and right */
 }
 
 .header-left,
@@ -46,6 +47,7 @@
     display: flex; /* Center content */
     justify-content: center; /* Center content */
     align-items: center; /* Center content */
+    margin-left: 20px; /* Add margin to the left */
 }
 
 .header-img {
