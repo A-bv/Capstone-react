@@ -1,24 +1,24 @@
 # Little Lemon Restaurant
 
-Welcome to this Little Lemon Restaurant Project! A modern web application built using React.js, providing customers a way to book reservations, explore daily specials, read testimonials, and learn more about the restaurant. This project is part of the Meta Frontend certification.
+Welcome to this Little Lemon Restaurant Project! A modern web application built using React.js, providing customers a way to book reservations, explore daily specials, read testimonials, and learn more about the restaurant. This project is part of the Meta Frontend developer certification.
 
 ## Project Overview
 
 The Little Lemon Restaurant website is designed to showcase highlights, allow users to make reservations, and provide information about the restaurant. It includes:
 
-- **Home Page:** Featuring our daily specials and highlights.
-- **Booking Page:** A reservation form for customers to book a table.
+- **Home Page:** Showcasing the Little Lemon Restaurant's products with different sections.
+- **Highlights Section:** Featuring daily specials.
 - **Testimonials Section:** Customer reviews and ratings.
 - **About Us Section:** Information about our restaurant's history and interior.
-- **Header and Footer:** Consistent navigation and branding throughout the site.
+- **Header and Footer Section:** Consistent navigation and branding throughout the site.
+- **Booking Page:** A reservation form for customers to book a table.
 
 ## Features
 
 - **Responsive Design:** Optimized for both mobile and desktop views.
 - **Form Validation:** Ensures accurate user inputs in the booking form.
 - **Dynamic Navigation:** Smooth scrolling and modal pop-ups for contact information.
-- **Daily Specials:** Display of featured menu items with images and descriptions.
-- **Customer Reviews:** Showcases customer testimonials with ratings.
+- **UI/UX:** Follows prototype and easy to use.
 
 ## Installation
 
@@ -59,7 +59,7 @@ Once the development server is running, you can:
 - **Inspect the website:** See the home page and it reacts the different screen sizes.
 - **Check the navigation:** See how the navigation bar adapts to different screen sizes and perform actions.
 - **Book a Table:** Fill out the reservation form on the Booking page and test field validation.
-- **Run Unit testing** Automated unit tests are implemented.
+- **Run Unit testing:** Automated unit tests are implemented.
 
 ## Contributing
 
@@ -102,4 +102,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 Feel free to adjust this README to better fit your project’s specifics and requirements!
-
