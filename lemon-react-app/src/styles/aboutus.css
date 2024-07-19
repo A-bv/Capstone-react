@@ -10,7 +10,6 @@
     flex: 1;
     max-width: 400px; /* Adjusted width for the text box */
     text-align: left;
-    margin-bottom: 30px; /* Increased space between text and image on smaller screens */
 }
 
 .about-us-images {
@@ -37,11 +36,12 @@
 }
 
 .first-image {
-    z-index: 0.5; /* Ensure this image is below the second image */
+    z-index: 2; /* Ensure this image is below the second image */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow to the first image */
 }
 
 .second-image {
-    z-index: 0.6; /* Ensure this image is on top of the first image */
+    z-index: 0; /* Ensure this image is on top of the first image */
     top: 70px; /* Move the second image up to overlap the first image */
     left: 250px; /* Move the second image to the right */
 }
