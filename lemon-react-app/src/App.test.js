@@ -1,15 +1,18 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
-import App from './App';
 import { BrowserRouter as Router } from 'react-router-dom';
+import App from './App';
+import { act } from 'react'; // Update import for `act`
 
-test('renders learn react link', () => {
-  render(
-    <Router>
-      <App /> {/* Wrap App in Router */}
-    </Router>
-  );
+test('renders home link', () => {
+  act(() => {
+    render(
+      <Router>
+        <App />
+      </Router>
+    );
+  });
 
-  const linkElement = screen.getByText(/learn react/i);
+  // Replace "learn react" with actual text from your App component
+  const linkElement = screen.getByText(/home/i);
   expect(linkElement).toBeInTheDocument();
 });
