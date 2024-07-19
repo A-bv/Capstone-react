@@ -8,8 +8,8 @@ The Little Lemon Restaurant website is designed to showcase highlights, allow us
 
 - **Home Page:** Featuring our daily specials and highlights.
 - **Booking Page:** A reservation form for customers to book a table.
-- **Testimonials Page:** Customer reviews and ratings.
-- **About Us Page:** Information about our restaurant's history and interior.
+- **Testimonials Section:** Customer reviews and ratings.
+- **About Us Section:** Information about our restaurant's history and interior.
 - **Header and Footer:** Consistent navigation and branding throughout the site.
 
 ## Features
