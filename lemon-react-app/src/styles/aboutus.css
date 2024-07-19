@@ -4,40 +4,47 @@
     display: flex;
     flex-direction: column;
     align-items: center; /* Center items horizontally */
-    padding: 20px;
 }
 
 .about-us-content {
     flex: 1;
-    max-width: 500px; /* Adjusted width for the text box */
+    max-width: 400px; /* Adjusted width for the text box */
     text-align: left;
-    margin-bottom: 20px; /* Space between text and image on smaller screens */
+    margin-bottom: 30px; /* Increased space between text and image on smaller screens */
+}
+
+.about-us-images {
+    position: relative; /* Position images relative to this container */
+    width: 300px; /* Width for both images */
+    height: 250px; /* Height for both images */
 }
 
 .about-us-image {
-    flex: 1;
-    max-width: 300px; /* Fixed width */
-    max-height: 300px; /* Fixed height */
+    position: absolute; /* Position images absolutely within the container */
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     border-radius: 8px;
     display: flex; /* Center content */
     justify-content: center; /* Center content */
     align-items: center; /* Center content */
-    margin-left: 20px; /* Add space between text and image */
-    padding-right: 20px; /* Add right padding to image */
 }
 
-.about-us-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Maintain aspect ratio */
-    border-radius: 8px; /* Corner radius */
+.first-image {
+    z-index: 0.5; /* Ensure this image is below the second image */
+}
+
+.second-image {
+    z-index: 0.6; /* Ensure this image is on top of the first image */
+    top: 70px; /* Move the second image up to overlap the first image */
+    left: 200px; /* Move the second image to the right */
 }
 
 /* Media query for large screens */
 @media (min-width: 1200px) {
     .about-us-section {
         flex-direction: row;
+        padding: 40px 20px; /* Ensure padding remains consistent on larger screens */
     }
 
     .about-us-content {
@@ -46,7 +53,11 @@
     }
 }
 
+/* Extra space below the content */
+.about-us-section .extra-space {
+    margin-bottom: 40px; /* Adjust as needed for more space below */
+}
+
 body {
-    margin-bottom: 100px; /* Ensure enough space for footer */
-    background-color: #f9f9f9; /* Default background color */
+    margin-bottom: 170px; /* Ensure enough space for footer */
 }
