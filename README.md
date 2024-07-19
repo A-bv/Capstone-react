@@ -1,6 +1,6 @@
 # Little Lemon Restaurant
 
-This project is a modern web application built using React.js, providing customers a way to book reservations, explore daily specials, read testimonials, and learn more about the restaurant.
+Welcome to this Little Lemon Restaurant Project! A modern web application built using React.js, providing customers a way to book reservations, explore daily specials, read testimonials, and learn more about the restaurant.
 
 ## Project Overview
 
@@ -56,14 +56,13 @@ To get started with the Little Lemon Restaurant website, follow these steps:
 
 Once the development server is running, you can:
 
-- **View the Home Page:** See the daily specials and featured dishes.
-- **Book a Table:** Fill out the reservation form on the Booking page.
-- **Read Testimonials:** Check out customer reviews and ratings on the Testimonials page.
-- **Learn More About Us:** Explore our history and interior on the About Us page.
+- **Inspect the website:** See the home page and it reacts the different screen sizes.
+- **Check the navigation:** See how the navigation bar adapts to different screen sizes and perform actions.
+- **Book a Table:** Fill out the reservation form on the Booking page and test field validation.
 
 ## Contributing
 
-We welcome contributions to the Little Lemon Restaurant website! If you would like to contribute, please follow these guidelines:
+Contributions to this Little Lemon Restaurant website are welcome! If you would like to contribute, please follow these guidelines:
 
 1. **Fork the Repository**
 2. **Create a New Branch**
