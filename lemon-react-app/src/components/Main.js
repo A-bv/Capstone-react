@@ -1,5 +1,5 @@
 import React from 'react';
-import '../styles/main.css'; // Import CSS for Main
+import '../styles/main.css';
 import brochetteImage from '../assets/brochette.jpg';
 import pitaImage from '../assets/pita.jpg';
 import greekImage from '../assets/greek.jpg';

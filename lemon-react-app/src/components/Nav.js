@@ -46,9 +46,9 @@ function Nav({ aboutUsRef }) {
         <nav className="navbar">
             <img src={logo} alt="Logo" className="nav-logo" />
             {/* Toggle button for mobile view */}
-            <button 
-                className="menu-toggle" 
-                onClick={toggleMenu} 
+            <button
+                className="menu-toggle"
+                onClick={toggleMenu}
                 aria-label="Toggle menu"
             >
                 ☰

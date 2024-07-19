@@ -1,7 +1,7 @@
 // ContactModal.js
 
 import React from 'react';
-import '../styles/contactmodal.css'; // Import CSS for ContactModal
+import '../styles/contactmodal.css';
 
 function ContactModal({ onClose }) {
     return (

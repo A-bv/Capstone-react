@@ -1,8 +1,8 @@
 // src/components/BookingHeader.js
 
 import React from 'react';
-import restaurantFood from '../assets/restaurantFood.jpg'; // Use a booking-specific image if available
-import '../styles/header.css'; // Reuse the same header styles
+import restaurantFood from '../assets/restaurantFood.jpg';
+import '../styles/header.css';
 
 function BookingHeader() {
     return (

@@ -1,8 +1,8 @@
 // Testimonials.js
 import React from 'react';
-import '../styles/testimonials.css'; // Import CSS for Testimonials
-import customerImage1 from '../assets/customer1.jpg'; // Example customer image
-import customerImage2 from '../assets/customer2.jpg'; // Example customer image
+import '../styles/testimonials.css';
+import customerImage1 from '../assets/customer1.jpg';
+import customerImage2 from '../assets/customer2.jpg';
 
 const testimonialsData = [
     {
@@ -46,7 +46,6 @@ function Testimonials() {
     );
 }
 
-// Helper function to render star ratings
 function renderStars(rating) {
     const stars = [];
     for (let i = 0; i < rating; i++) {

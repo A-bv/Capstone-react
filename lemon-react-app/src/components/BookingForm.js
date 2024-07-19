@@ -1,7 +1,7 @@
 // src/components/BookingForm.js
 
 import React, { useState } from 'react';
-import '../styles/bookingform.css'; // Adjust the path as necessary
+import '../styles/bookingform.css';
 
 const InputField = ({ label, id, name, type, value, onChange, required, min, max, error }) => (
     <div className="form-group">
@@ -56,8 +56,10 @@ const BookingForm = () => {
         const newErrors = { ...errors };
 
         // Name validation
-        if (formData.name.trim() === '') {
-            newErrors.name = 'Name is required.';
+        const namePattern = /^[A-Za-z]{2,}$/; // Regular expression to match only letters and at least 2 characters
+
+        if (!namePattern.test(formData.name.trim())) {
+            newErrors.name = 'Name is invalid.';
             isValid = false;
         } else {
             newErrors.name = '';
@@ -101,7 +103,7 @@ const BookingForm = () => {
         if (validateForm()) {
             // Handle form submission logic (e.g., API call)
             alert('Your reservation has been confirmed!'); // Display confirmation alert
-            
+
             // Reset form values
             setFormData({
                 name: '',
