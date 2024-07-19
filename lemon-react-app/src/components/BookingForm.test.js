@@ -29,9 +29,8 @@ describe('BookingForm Component', () => {
     expect(screen.queryByText(/name is invalid/i)).toBeInTheDocument();
     expect(screen.queryByText(/email is invalid/i)).toBeInTheDocument();
     expect(screen.queryByText(/date is required/i)).toBeInTheDocument();
-  });*/
+  });
 
-  /*
   test('shows error for invalid number of guests', () => {
     const guestsInput = screen.getByLabelText(/number of guests/i);
 
@@ -39,8 +38,7 @@ describe('BookingForm Component', () => {
     fireEvent.blur(guestsInput);
 
     expect(screen.queryByText(/number of guests must be between 1 and 10/i)).toBeInTheDocument();
-  });
-*/
+  }); */
 
   test('fills out the form correctly', () => {
     fireEvent.change(screen.getByLabelText(/name/i), { target: { value: 'John Doe' } });
