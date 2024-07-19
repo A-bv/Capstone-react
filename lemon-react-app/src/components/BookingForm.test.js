@@ -16,7 +16,6 @@ describe('BookingForm Component', () => {
     expect(screen.getByLabelText(/number of guests/i)).toBeInTheDocument();
   });
 
-  /*
   test('displays validation messages', () => {
     const nameInput = screen.getByLabelText(/name/i);
     const emailInput = screen.getByLabelText(/email/i);
@@ -38,7 +37,7 @@ describe('BookingForm Component', () => {
     fireEvent.blur(guestsInput);
 
     expect(screen.queryByText(/number of guests must be between 1 and 10/i)).toBeInTheDocument();
-  }); */
+  });
 
   test('fills out the form correctly', () => {
     fireEvent.change(screen.getByLabelText(/name/i), { target: { value: 'John Doe' } });
@@ -46,7 +45,5 @@ describe('BookingForm Component', () => {
     fireEvent.change(screen.getByLabelText(/choose date/i), { target: { value: '2023-12-25' } });
     fireEvent.change(screen.getByLabelText(/choose time/i), { target: { value: '18:00' } });
     fireEvent.change(screen.getByLabelText(/number of guests/i), { target: { value: '2' } });
-
-    // Submit form if necessary
   });
 });

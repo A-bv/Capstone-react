@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import '../styles/bookingform.css';
 
-const InputField = ({ label, id, name, type, value, onChange, required, min, max, error }) => (
+const InputField = ({ label, id, name, type, value, onChange, onBlur, required, min, max, error }) => (
     <div className="form-group">
         <label htmlFor={id}>{label}:</label>
         <input
@@ -12,6 +12,7 @@ const InputField = ({ label, id, name, type, value, onChange, required, min, max
             name={name}
             value={value}
             onChange={onChange}
+            onBlur={onBlur}  // Add this line
             required={required}
             min={min}
             max={max}
@@ -98,6 +99,10 @@ const BookingForm = () => {
         setFormData({ ...formData, [name]: value });
     };
 
+    const handleBlur = (e) => {
+        validateForm();
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validateForm()) {
@@ -135,6 +140,7 @@ const BookingForm = () => {
                     type="text"
                     value={formData.name}
                     onChange={handleChange}
+                    onBlur={handleBlur}  // Add this line
                     required
                     error={errors.name}
                 />
@@ -146,6 +152,7 @@ const BookingForm = () => {
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
+                    onBlur={handleBlur}  // Add this line
                     required
                     error={errors.email}
                 />
@@ -157,6 +164,7 @@ const BookingForm = () => {
                     type="date"
                     value={formData.date}
                     onChange={handleChange}
+                    onBlur={handleBlur}  // Add this line
                     required
                     error={errors.date}
                 />
@@ -177,6 +185,7 @@ const BookingForm = () => {
                     type="number"
                     value={formData.guests}
                     onChange={handleChange}
+                    onBlur={handleBlur}  // Add this line
                     min="1"
                     max="10"
                     required
