@@ -59,6 +59,7 @@ Once the development server is running, you can:
 - **Inspect the website:** See the home page and it reacts the different screen sizes.
 - **Check the navigation:** See how the navigation bar adapts to different screen sizes and perform actions.
 - **Book a Table:** Fill out the reservation form on the Booking page and test field validation.
+- **Run Unit testing** Automated unit tests are implemented.
 
 ## Contributing
 
