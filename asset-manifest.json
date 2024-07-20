@@ -1,24 +1,24 @@
 {
   "files": {
-    "main.css": "/Capstone-react/lemon-react-app/static/css/main.ecd45dbc.css",
-    "main.js": "/Capstone-react/lemon-react-app/static/js/main.76165234.js",
-    "static/media/restaurantFood.jpg": "/Capstone-react/lemon-react-app/static/media/restaurantFood.e8abf5b772b6817189aa.jpg",
-    "static/media/teama.jpg": "/Capstone-react/lemon-react-app/static/media/teama.28604718847d7b78b400.jpg",
-    "static/media/teamb.jpg": "/Capstone-react/lemon-react-app/static/media/teamb.a3d991bb97f7c34a8563.jpg",
-    "static/media/customer1.jpg": "/Capstone-react/lemon-react-app/static/media/customer1.c0a9f335a60df0effca7.jpg",
-    "static/media/humus.jpg": "/Capstone-react/lemon-react-app/static/media/humus.d4ce62209a19a603fae9.jpg",
-    "static/media/greek.jpg": "/Capstone-react/lemon-react-app/static/media/greek.b2e33fd595ffc600eb86.jpg",
-    "static/media/brochette.jpg": "/Capstone-react/lemon-react-app/static/media/brochette.5d421b6a630a96714e05.jpg",
-    "static/media/pita.jpg": "/Capstone-react/lemon-react-app/static/media/pita.1b3309b1e321cf5c453e.jpg",
-    "static/media/customer2.jpg": "/Capstone-react/lemon-react-app/static/media/customer2.12eaa1574cbb21b27ed0.jpg",
-    "static/media/wallpaper.jpg": "/Capstone-react/lemon-react-app/static/media/wallpaper.324d0f99bdf19400a0f7.jpg",
-    "static/media/Logo.svg": "/Capstone-react/lemon-react-app/static/media/Logo.f72c913c48c5334f78f2c336ec36f22b.svg",
-    "index.html": "/Capstone-react/lemon-react-app/index.html",
-    "main.ecd45dbc.css.map": "/Capstone-react/lemon-react-app/static/css/main.ecd45dbc.css.map",
-    "main.76165234.js.map": "/Capstone-react/lemon-react-app/static/js/main.76165234.js.map"
+    "main.css": "/Capstone-react/static/css/main.ecd45dbc.css",
+    "main.js": "/Capstone-react/static/js/main.25cbec2c.js",
+    "static/media/restaurantFood.jpg": "/Capstone-react/static/media/restaurantFood.e8abf5b772b6817189aa.jpg",
+    "static/media/teama.jpg": "/Capstone-react/static/media/teama.28604718847d7b78b400.jpg",
+    "static/media/teamb.jpg": "/Capstone-react/static/media/teamb.a3d991bb97f7c34a8563.jpg",
+    "static/media/customer1.jpg": "/Capstone-react/static/media/customer1.c0a9f335a60df0effca7.jpg",
+    "static/media/humus.jpg": "/Capstone-react/static/media/humus.d4ce62209a19a603fae9.jpg",
+    "static/media/greek.jpg": "/Capstone-react/static/media/greek.b2e33fd595ffc600eb86.jpg",
+    "static/media/brochette.jpg": "/Capstone-react/static/media/brochette.5d421b6a630a96714e05.jpg",
+    "static/media/pita.jpg": "/Capstone-react/static/media/pita.1b3309b1e321cf5c453e.jpg",
+    "static/media/customer2.jpg": "/Capstone-react/static/media/customer2.12eaa1574cbb21b27ed0.jpg",
+    "static/media/wallpaper.jpg": "/Capstone-react/static/media/wallpaper.324d0f99bdf19400a0f7.jpg",
+    "static/media/Logo.svg": "/Capstone-react/static/media/Logo.f72c913c48c5334f78f2c336ec36f22b.svg",
+    "index.html": "/Capstone-react/index.html",
+    "main.ecd45dbc.css.map": "/Capstone-react/static/css/main.ecd45dbc.css.map",
+    "main.25cbec2c.js.map": "/Capstone-react/static/js/main.25cbec2c.js.map"
   },
   "entrypoints": [
     "static/css/main.ecd45dbc.css",
-    "static/js/main.76165234.js"
+    "static/js/main.25cbec2c.js"
   ]
 }
