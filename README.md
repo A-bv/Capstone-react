@@ -2,9 +2,12 @@
 
 Welcome to this Little Lemon Restaurant Project! A modern web application built using React.js, providing customers a way to book reservations, explore daily specials, read testimonials, and learn more about the restaurant. This project is part of the Meta Frontend Developer certification.
 
+## Check the website out live!
+https://a-bv.github.io/Capstone-react/
+
 ## Project Overview
 
-The Little Lemon Restaurant website is designed to showcase highlights, allow users to make reservations, and provide information about the restaurant. It includes:
+The Little Lemon Restaurant website is designed to showcase highlights, allowing users to make reservations, and provide information about the restaurant. It includes:
 
 - **Home Page:** Showcasing the Little Lemon Restaurant's products with different sections.
 - **Highlights Section:** Featuring daily specials.
@@ -18,7 +21,7 @@ The Little Lemon Restaurant website is designed to showcase highlights, allow us
 - **Responsive Design:** Optimized for both mobile and desktop views.
 - **Form Validation:** Ensures accurate user inputs in the booking form.
 - **Dynamic Navigation:** Smooth scrolling and modal pop-ups for contact information.
-- **UI/UX:** Follows prototype and easy to use.
+- **UI/UX:** Follows prototype and easy to use (figma .fg file included in the repository).
 
 ## Installation
 
