@@ -16,7 +16,7 @@ function App() {
     const aboutUsRef = useRef(null);
 
     return (
-        <BrowserRouter basename="/Capstone-react/lemon-react-app">
+        <BrowserRouter basename="/Capstone-react">
             <div className="App">
                 <Nav aboutUsRef={aboutUsRef} />
                 <Routes>
