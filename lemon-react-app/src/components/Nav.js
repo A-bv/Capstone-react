@@ -6,7 +6,7 @@ import ContactModal from './ContactModal';
 
 function Nav({ aboutUsRef }) {
     const [showModal, setShowModal] = useState(false);
-    const [isMenuOpen, setIsMenuOpen] = useState(false); // New state for menu toggle
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
     const navigate = useNavigate();
 
     const handleContactClick = () => {
@@ -19,18 +19,20 @@ function Nav({ aboutUsRef }) {
         }
     };
 
+    /*
     const scrollToAboutUsWithoutAnimation = () => {
         if (aboutUsRef.current) {
             aboutUsRef.current.scrollIntoView({ behavior: 'auto' });
         }
     };
+    */
 
     const handleNavigationToAboutUs = () => {
         if (window.location.pathname === '/') {
             scrollToAboutUsWithAnimation();
         } else {
             navigate('/');
-            setTimeout(scrollToAboutUsWithoutAnimation, 0); // Scroll after navigating
+            setTimeout(scrollToAboutUsWithAnimation, 0); // Scroll after navigating
         }
     };
 
