@@ -28,6 +28,40 @@
     box-sizing: border-box;
 }
 
+/* Ensure date and time pickers have consistent styling */
+.booking-form input[type="date"],
+.booking-form input[type="time"] {
+    width: 100%; /* Ensure they take full width of the parent container */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    box-sizing: border-box;
+    font-size: 1em;
+}
+
+.booking-form input[type="date"]::-webkit-inner-spin-button,
+.booking-form input[type="time"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.booking-form input[type="date"]::-webkit-calendar-picker-indicator,
+.booking-form input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(30%) sepia(60%) saturate(500%) hue-rotate(90deg) brightness(90%) contrast(90%);
+}
+
+/* Specific styling for occasion picker (select element) */
+.booking-form select {
+    width: 100%; /* Ensure full width */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
 .booking-form input[type="submit"] {
     background-color: #495E57;
     color: white;
@@ -45,11 +79,6 @@
 .booking-form input[type="submit"]:hover {
     background-color: #F4CE14;
     color: #333333;
-}
-
-.booking-form input[type="date"],
-.booking-form input[type="time"] {
-    width: calc(100% - 16px); /* Adjust for padding */
 }
 
 .error-message {
