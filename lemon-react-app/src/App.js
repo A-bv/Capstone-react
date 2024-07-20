@@ -16,7 +16,7 @@ function App() {
     const aboutUsRef = useRef(null);
 
     return (
-        <BrowserRouter>
+        <BrowserRouter basename="/Capstone-react/lemon-react-app">
             <div className="App">
                 <Nav aboutUsRef={aboutUsRef} />
                 <Routes>
@@ -29,7 +29,6 @@ function App() {
     );
 }
 
-// Home page component for nested routing
 function HomePageScreen({ aboutUsRef }) {
     return (
         <>
@@ -48,7 +47,6 @@ function HomePageScreen({ aboutUsRef }) {
     );
 }
 
-// Booking page component for nested routing
 function BookingPage() {
     return (
         <>
