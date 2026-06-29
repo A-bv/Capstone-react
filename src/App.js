@@ -1,7 +1,7 @@
 // src/App.js
 
 import React, { useRef } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Main from './components/Main';
@@ -16,7 +16,7 @@ function App() {
     const aboutUsRef = useRef(null);
 
     return (
-        <BrowserRouter basename="/Capstone-react">
+        <HashRouter>
             <div className="App">
                 <Nav aboutUsRef={aboutUsRef} />
                 <Routes>
@@ -25,7 +25,7 @@ function App() {
                 </Routes>
                 <Footer />
             </div>
-        </BrowserRouter>
+        </HashRouter>
     );
 }
 

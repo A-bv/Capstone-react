@@ -40,10 +40,16 @@ describe('BookingForm Component', () => {
   });
 
   test('fills out the form correctly', () => {
-    fireEvent.change(screen.getByLabelText(/name/i), { target: { value: 'John Doe' } });
+    fireEvent.change(screen.getByLabelText(/name/i), { target: { value: 'John' } });
     fireEvent.change(screen.getByLabelText(/email/i), { target: { value: 'john@example.com' } });
     fireEvent.change(screen.getByLabelText(/choose date/i), { target: { value: '2023-12-25' } });
     fireEvent.change(screen.getByLabelText(/choose time/i), { target: { value: '18:00' } });
     fireEvent.change(screen.getByLabelText(/number of guests/i), { target: { value: '2' } });
+
+    expect(screen.getByLabelText(/name/i)).toHaveValue('John');
+    expect(screen.getByLabelText(/email/i)).toHaveValue('john@example.com');
+    expect(screen.getByLabelText(/choose date/i)).toHaveValue('2023-12-25');
+    expect(screen.getByLabelText(/choose time/i)).toHaveValue('18:00');
+    expect(screen.getByLabelText(/number of guests/i)).toHaveValue(2);
   });
 });

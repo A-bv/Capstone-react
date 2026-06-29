@@ -1,15 +1,11 @@
 import { render, screen } from '@testing-library/react';
-import { BrowserRouter as Router } from 'react-router-dom';
 import App from './App';
 import { act } from 'react'; // Update import for `act`
 
 test('renders home link', () => {
+  // App already provides its own Router, so render it directly
   act(() => {
-    render(
-      <Router>
-        <App />
-      </Router>
-    );
+    render(<App />);
   });
 
   // Replace "learn react" with actual text from your App component

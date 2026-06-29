@@ -12,26 +12,36 @@ const InputField = ({ label, id, name, type, value, onChange, onBlur, required, 
             name={name}
             value={value}
             onChange={onChange}
-            onBlur={onBlur}  // Add this line
+            onBlur={onBlur}
             required={required}
             min={min}
             max={max}
+            aria-invalid={error ? 'true' : 'false'}
+            aria-describedby={error ? `${id}-error` : undefined}
         />
-        {error && <p className="error-message">{error}</p>}
+        {error && <p id={`${id}-error`} className="error-message" role="alert">{error}</p>}
     </div>
 );
 
 const SelectField = ({ label, id, name, value, onChange, options, error }) => (
     <div className="form-group">
         <label htmlFor={id}>{label}:</label>
-        <select id={id} name={name} value={value} onChange={onChange} required>
+        <select
+            id={id}
+            name={name}
+            value={value}
+            onChange={onChange}
+            required
+            aria-invalid={error ? 'true' : 'false'}
+            aria-describedby={error ? `${id}-error` : undefined}
+        >
             {options.map((option, index) => (
                 <option key={index} value={option}>
                     {option}
                 </option>
             ))}
         </select>
-        {error && <p className="error-message">{error}</p>}
+        {error && <p id={`${id}-error`} className="error-message" role="alert">{error}</p>}
     </div>
 );
 
@@ -52,55 +62,54 @@ const BookingForm = () => {
         guests: '',
     });
 
+    const [touched, setTouched] = useState({});
+
+    // Validate a single field and return its error message ('' when valid)
+    const validateField = (name, value) => {
+        switch (name) {
+            case 'name': {
+                const namePattern = /^[A-Za-z]{2,}$/; // only letters, at least 2 characters
+                return namePattern.test(String(value).trim()) ? '' : 'Name is invalid.';
+            }
+            case 'email':
+                return /\S+@\S+\.\S+/.test(value) ? '' : 'Email is invalid.';
+            case 'date':
+                return value === '' ? 'Date is required.' : '';
+            case 'guests':
+                return value < 1 || value > 10 ? 'Number of guests must be between 1 and 10.' : '';
+            default:
+                return '';
+        }
+    };
+
     const validateForm = () => {
-        let isValid = true;
-        const newErrors = { ...errors };
-
-        // Name validation
-        const namePattern = /^[A-Za-z]{2,}$/; // Regular expression to match only letters and at least 2 characters
-
-        if (!namePattern.test(formData.name.trim())) {
-            newErrors.name = 'Name is invalid.';
-            isValid = false;
-        } else {
-            newErrors.name = '';
-        }
-
-        // Email validation
-        if (!/\S+@\S+\.\S+/.test(formData.email)) {
-            newErrors.email = 'Email is invalid.';
-            isValid = false;
-        } else {
-            newErrors.email = '';
-        }
-
-        // Date validation
-        if (formData.date === '') {
-            newErrors.date = 'Date is required.';
-            isValid = false;
-        } else {
-            newErrors.date = '';
-        }
-
-        // Guests validation
-        if (formData.guests < 1 || formData.guests > 10) {
-            newErrors.guests = 'Number of guests must be between 1 and 10.';
-            isValid = false;
-        } else {
-            newErrors.guests = '';
-        }
+        const newErrors = {
+            name: validateField('name', formData.name),
+            email: validateField('email', formData.email),
+            date: validateField('date', formData.date),
+            guests: validateField('guests', formData.guests),
+        };
 
         setErrors(newErrors);
-        return isValid;
+        setTouched({ name: true, email: true, date: true, guests: true });
+        return Object.values(newErrors).every((error) => error === '');
     };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({ ...formData, [name]: value });
+        const newValue = name === 'guests' ? Number(value) : value;
+        setFormData({ ...formData, [name]: newValue });
+
+        // Re-validate on change only once the field has been touched
+        if (touched[name]) {
+            setErrors((prev) => ({ ...prev, [name]: validateField(name, newValue) }));
+        }
     };
 
     const handleBlur = (e) => {
-        validateForm();
+        const { name, value } = e.target;
+        setTouched((prev) => ({ ...prev, [name]: true }));
+        setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
     };
 
     const handleSubmit = (e) => {
@@ -126,6 +135,7 @@ const BookingForm = () => {
                 date: '',
                 guests: '',
             });
+            setTouched({});
         }
     };
 
