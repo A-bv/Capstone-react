@@ -1,6 +1,6 @@
 // src/components/BookingForm.js
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../styles/bookingform.css';
 
 const InputField = ({ label, id, name, type, value, onChange, onBlur, required, min, max, error }) => (
@@ -45,15 +45,23 @@ const SelectField = ({ label, id, name, value, onChange, options, error }) => (
     </div>
 );
 
-const BookingForm = () => {
+const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
         date: '',
-        time: '17:00', // Default time
+        time: availableTimes[0] || '', // First available slot
         guests: 1,
         occasion: 'Birthday', // Default occasion
     });
+
+    // Keep the selected time valid whenever the available slots change
+    useEffect(() => {
+        if (availableTimes.length && !availableTimes.includes(formData.time)) {
+            setFormData((prev) => ({ ...prev, time: availableTimes[0] }));
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [availableTimes]);
 
     const [errors, setErrors] = useState({
         name: '',
@@ -98,7 +106,13 @@ const BookingForm = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
         const newValue = name === 'guests' ? Number(value) : value;
-        setFormData({ ...formData, [name]: newValue });
+
+        // Refresh available times when the date changes
+        if (name === 'date' && dispatch) {
+            dispatch({ type: 'UPDATE_TIMES', date: value });
+        }
+
+        setFormData((prev) => ({ ...prev, [name]: newValue }));
 
         // Re-validate on change only once the field has been touched
         if (touched[name]) {
@@ -114,28 +128,8 @@ const BookingForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (validateForm()) {
-            // Handle form submission logic (e.g., API call)
-            alert('Your reservation has been confirmed!'); // Display confirmation alert
-
-            // Reset form values
-            setFormData({
-                name: '',
-                email: '',
-                date: '',
-                time: '17:00',
-                guests: 1,
-                occasion: 'Birthday',
-            });
-
-            // Clear errors
-            setErrors({
-                name: '',
-                email: '',
-                date: '',
-                guests: '',
-            });
-            setTouched({});
+        if (validateForm() && submitForm) {
+            submitForm(formData);
         }
     };
 
@@ -185,7 +179,7 @@ const BookingForm = () => {
                     name="time"
                     value={formData.time}
                     onChange={handleChange}
-                    options={['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']}
+                    options={availableTimes}
                 />
 
                 <InputField

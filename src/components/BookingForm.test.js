@@ -5,7 +5,13 @@ import BookingForm from './BookingForm';
 
 describe('BookingForm Component', () => {
   beforeEach(() => {
-    render(<BookingForm />);
+    render(
+      <BookingForm
+        availableTimes={['17:00', '18:00', '19:00']}
+        dispatch={() => {}}
+        submitForm={() => true}
+      />
+    );
   });
 
   test('renders form elements', () => {

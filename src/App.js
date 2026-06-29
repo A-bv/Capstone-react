@@ -9,6 +9,7 @@ import Nav from './components/Nav';
 import Testimonials from './components/Testimonials';
 import AboutUs from './components/AboutUs';
 import Booking from './components/Booking';
+import ConfirmedBooking from './components/ConfirmedBooking';
 import restaurantFood from './assets/restaurantFood.jpg';
 import wallpaper from './assets/wallpaper.jpg';
 
@@ -22,6 +23,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<HomePageScreen aboutUsRef={aboutUsRef} />} />
                     <Route path="/booking" element={<BookingPage />} />
+                    <Route path="/confirmed" element={<ConfirmedBooking />} />
                 </Routes>
                 <Footer />
             </div>
