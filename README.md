@@ -21,7 +21,7 @@ The Little Lemon Restaurant website is designed to showcase highlights, allowing
 - **Responsive Design:** Optimized for both mobile and desktop views.
 - **Form Validation:** Ensures accurate user inputs in the booking form.
 - **Dynamic Navigation:** Smooth scrolling and modal pop-ups for contact information.
-- **UI/UX:** Follows prototype and easy to use (figma .fg file included in the repository).
+- **UI/UX:** Follows prototype and easy to use (Figma `.fig` file included in the repository).
 
 ## Installation
 
@@ -30,13 +30,13 @@ To get started with the Little Lemon Restaurant website, follow these steps:
 1. **Clone the Repository:**
 
     ```bash
-    git clone https://github.com/your-username/little-lemon-restaurant.git
+    git clone https://github.com/A-bv/Capstone-react.git
     ```
 
 2. **Navigate to the Project Directory:**
 
     ```bash
-    cd little-lemon-restaurant
+    cd Capstone-react
     ```
 
 3. **Install Dependencies:**
@@ -59,10 +59,25 @@ To get started with the Little Lemon Restaurant website, follow these steps:
 
 Once the development server is running, you can:
 
-- **Inspect the website:** See the home page and it reacts the different screen sizes.
+- **Inspect the website:** Browse the home page and see how it responds to different screen sizes.
 - **Check the navigation:** See how the navigation bar adapts to different screen sizes and perform actions.
 - **Book a Table:** Fill out the reservation form on the Booking page and test field validation.
-- **Run Unit testing:** Automated unit tests are implemented.
+
+## Tests
+
+Automated unit tests (React Testing Library + Jest) cover the booking form and routing. Run them with:
+
+```bash
+npm test
+```
+
+## Deployment
+
+The site is deployed to GitHub Pages with:
+
+```bash
+npm run deploy
+```
 
 ## Contributing
 
@@ -101,7 +116,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - [React.js](https://reactjs.org/) - A JavaScript library for building user interfaces.
 - [React Router](https://reactrouter.com/) - Declarative routing for React.js.
 - [CSS Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - Layout model for creating responsive designs.
-
----
-
-Feel free to adjust this README to better fit your project’s specifics and requirements!
