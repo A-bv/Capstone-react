@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Capstone-react/static/css/main.ecd45dbc.css",
-    "main.js": "/Capstone-react/static/js/main.a244308b.js",
+    "main.js": "/Capstone-react/static/js/main.f3ec00e1.js",
     "static/media/restaurantFood.jpg": "/Capstone-react/static/media/restaurantFood.e8abf5b772b6817189aa.jpg",
     "static/media/teama.jpg": "/Capstone-react/static/media/teama.28604718847d7b78b400.jpg",
     "static/media/teamb.jpg": "/Capstone-react/static/media/teamb.a3d991bb97f7c34a8563.jpg",
@@ -15,10 +15,10 @@
     "static/media/Logo.svg": "/Capstone-react/static/media/Logo.f72c913c48c5334f78f2c336ec36f22b.svg",
     "index.html": "/Capstone-react/index.html",
     "main.ecd45dbc.css.map": "/Capstone-react/static/css/main.ecd45dbc.css.map",
-    "main.a244308b.js.map": "/Capstone-react/static/js/main.a244308b.js.map"
+    "main.f3ec00e1.js.map": "/Capstone-react/static/js/main.f3ec00e1.js.map"
   },
   "entrypoints": [
     "static/css/main.ecd45dbc.css",
-    "static/js/main.a244308b.js"
+    "static/js/main.f3ec00e1.js"
   ]
 }
