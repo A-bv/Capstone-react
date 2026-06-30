@@ -6,7 +6,8 @@
 
 .article-section {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Three columns, equal width */
+    /* Responsive: as many ~220px columns as fit, wrapping on smaller screens */
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
     gap: 20px; /* Gap between grid items */
     padding-bottom: 20px; /* Padding inside the section */
     margin-bottom: 0px; /* Extra space for scrolling under the list */
@@ -22,10 +23,10 @@
 
 .article-image {
     width: 100%; /* Image width spanning the article width */
-    height: auto; /* Maintain aspect ratio */
+    height: 160px;
     border-radius: 8px;
-    max-height: 120px; /* Maximum height of 300px */
-    object-fit: cover; /* Ensures image covers the area while maintaining aspect ratio */
+    object-fit: cover; /* Cover the area while maintaining aspect ratio */
+    display: block;
 }
 
 .article h3 {

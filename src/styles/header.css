@@ -1,46 +1,42 @@
 /* src/styles/header.css */
 
-body {
-    margin: 0;
-    padding: 0;
-}
-
 .header {
     display: flex;
+    flex-wrap: wrap; /* Let the image drop below the text on narrow screens */
     justify-content: space-between;
     align-items: center;
-    padding: 20px 20px; /* Adjust padding as needed */
-    background-color: #495E57;
+    gap: 24px;
+    padding: 24px 20px;
+    background-color: var(--color-primary);
     text-align: left;
     box-sizing: border-box;
-    width: 100%; /* Ensure header spans the full width */
-}
-
-.header-container {
-    display: flex;
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
     width: 100%;
-    max-width: 1600px; /* Set a wider maximum width for the container */
-    margin: 0 auto; /* Center align the container */
-    padding: 0 20px; /* Add padding to the container */
 }
 
 .header-left {
-    flex: 1;
-    padding-right: 20px; /* Add spacing between text and image */
-    margin-left: 10%; /* Adjust margin as needed */
+    flex: 1 1 280px; /* Grow, but wrap when below 280px */
+    min-width: 0;
 }
 
 .header-right {
-    width: 400px; /* Adjust width of the image container */
-    height: 300px; /* Adjust height of the image container */
+    flex: 1 1 280px;
+    width: 100%;
+    max-width: 420px; /* Never wider than this, never overflows the viewport */
+    aspect-ratio: 4 / 3;
     border-radius: 8px;
     overflow: hidden;
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 10%; /* Adjust margin as needed */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add shadow to the first image */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.header-image,
+.header-img {
+    width: 100%;
+    height: 100%;
+}
+
+.header-img {
+    object-fit: cover;
+    display: block;
 }
 
 .header-text {
@@ -48,19 +44,31 @@ body {
 }
 
 .header h1 {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 5vw, 2.5rem);
     margin-bottom: 1rem;
-    color: #f5d742;
+    color: var(--color-accent);
 }
 
 .header h2 {
-    font-size: 1.5rem;
+    font-size: clamp(1.2rem, 3vw, 1.5rem);
     margin-bottom: 1rem;
-    color: #888;
+    color: #edefee; /* Accessible contrast on the dark green header */
 }
 
 .header p {
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
     color: #fff;
     line-height: 1.5;
+}
+
+/* Wider side gutters on large screens */
+@media (min-width: 1200px) {
+    .header-left {
+        margin-left: 10%;
+        padding-right: 20px;
+    }
+
+    .header-right {
+        margin-right: 10%;
+    }
 }
