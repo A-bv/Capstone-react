@@ -38,7 +38,9 @@ function ContactModal({ onClose }) {
                 <h2 id="contact-modal-title">Contact Details</h2>
                 <p>Email: contact@littlelemon.com</p>
                 <p>Phone: +1-123-456-7890</p>
-                <button className="close-btn" onClick={onClose}>Close</button>
+                <button className="close-btn" onClick={onClose}>
+                    Close
+                </button>
             </div>
         </div>
     );

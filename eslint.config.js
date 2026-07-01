@@ -3,6 +3,7 @@ import globals from 'globals';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
+import prettier from 'eslint-config-prettier';
 
 // Flat config (ESLint 9). JSX lives in .js files (CRA legacy), so every
 // source file is treated as JSX-capable.
@@ -53,4 +54,7 @@ export default [
         files: ['**/*.test.{js,jsx}', '**/setupTests.js'],
         languageOptions: { globals: { ...globals.browser, ...globals.vitest } },
     },
+
+    // Turn off ESLint rules that would conflict with Prettier. Must stay last.
+    prettier,
 ];

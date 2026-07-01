@@ -3,7 +3,19 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/bookingform.css';
 
-const InputField = ({ label, id, name, type, value, onChange, onBlur, required, min, max, error }) => (
+const InputField = ({
+    label,
+    id,
+    name,
+    type,
+    value,
+    onChange,
+    onBlur,
+    required,
+    min,
+    max,
+    error,
+}) => (
     <div className="form-group">
         <label htmlFor={id}>{label}:</label>
         <input
@@ -19,7 +31,11 @@ const InputField = ({ label, id, name, type, value, onChange, onBlur, required, 
             aria-invalid={error ? 'true' : 'false'}
             aria-describedby={error ? `${id}-error` : undefined}
         />
-        {error && <p id={`${id}-error`} className="error-message" role="alert">{error}</p>}
+        {error && (
+            <p id={`${id}-error`} className="error-message" role="alert">
+                {error}
+            </p>
+        )}
     </div>
 );
 
@@ -41,7 +57,11 @@ const SelectField = ({ label, id, name, value, onChange, options, error }) => (
                 </option>
             ))}
         </select>
-        {error && <p id={`${id}-error`} className="error-message" role="alert">{error}</p>}
+        {error && (
+            <p id={`${id}-error`} className="error-message" role="alert">
+                {error}
+            </p>
+        )}
     </div>
 );
 
@@ -144,7 +164,7 @@ const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
                     type="text"
                     value={formData.name}
                     onChange={handleChange}
-                    onBlur={handleBlur}  // Add this line
+                    onBlur={handleBlur} // Add this line
                     required
                     error={errors.name}
                 />
@@ -156,7 +176,7 @@ const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
-                    onBlur={handleBlur}  // Add this line
+                    onBlur={handleBlur} // Add this line
                     required
                     error={errors.email}
                 />
@@ -168,7 +188,7 @@ const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
                     type="date"
                     value={formData.date}
                     onChange={handleChange}
-                    onBlur={handleBlur}  // Add this line
+                    onBlur={handleBlur} // Add this line
                     required
                     error={errors.date}
                 />
@@ -189,7 +209,7 @@ const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
                     type="number"
                     value={formData.guests}
                     onChange={handleChange}
-                    onBlur={handleBlur}  // Add this line
+                    onBlur={handleBlur} // Add this line
                     min="1"
                     max="10"
                     required

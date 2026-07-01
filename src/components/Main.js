@@ -21,7 +21,10 @@ function Main() {
                 <article className="article">
                     <img src={greekImage} alt="Greek Salad" className="article-image" />
                     <h3>Greek Salad</h3>
-                    <p>Fresh and colorful Greek salad with olives, feta cheese, and a zesty dressing.</p>
+                    <p>
+                        Fresh and colorful Greek salad with olives, feta cheese, and a zesty
+                        dressing.
+                    </p>
                 </article>
                 <article className="article">
                     <img src={humusImage} alt="Hummus" className="article-image" />
@@ -36,7 +39,10 @@ function Main() {
                 <article className="article">
                     <img src={brochetteImage} alt="Skewers" className="article-image" />
                     <h3>Skewers</h3>
-                    <p>Grilled skewers of marinated meat and vegetables, a flavorful dish for any occasion.</p>
+                    <p>
+                        Grilled skewers of marinated meat and vegetables, a flavorful dish for any
+                        occasion.
+                    </p>
                 </article>
             </section>
         </main>

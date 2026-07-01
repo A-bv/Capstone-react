@@ -10,14 +10,16 @@ const testimonialsData = [
         name: 'John Doe',
         rating: 5,
         image: customerImage1,
-        comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero in mi tempus fermentum.',
+        comment:
+            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero in mi tempus fermentum.',
     },
     {
         id: 2,
         name: 'Jane Smith',
         rating: 4,
         image: customerImage2,
-        comment: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.',
+        comment:
+            'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.',
     },
     // Add more testimonials as needed
 ];
@@ -27,7 +29,7 @@ function Testimonials() {
         <section className="testimonials-section">
             <h2>Reviews</h2>
             <div className="testimonials-list">
-                {testimonialsData.map(testimonial => (
+                {testimonialsData.map((testimonial) => (
                     <div key={testimonial.id} className="testimonial">
                         <div className="testimonial-image">
                             <img src={testimonial.image} alt={testimonial.name} />
@@ -49,7 +51,11 @@ function Testimonials() {
 function renderStars(rating) {
     const stars = [];
     for (let i = 0; i < rating; i++) {
-        stars.push(<span key={i} className="star">&#9733;</span>);
+        stars.push(
+            <span key={i} className="star">
+                &#9733;
+            </span>,
+        );
     }
     return stars;
 }

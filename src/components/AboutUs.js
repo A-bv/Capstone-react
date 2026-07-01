@@ -10,7 +10,12 @@ function AboutUs() {
         <section id="about-us-section" className="about-us-section">
             <div className="about-us-content">
                 <h2>About Us</h2>
-                <p>Welcome to Little Lemon, located in the heart of Chicago. Our restaurant offers a delightful array of meals prepared with love and care. Our story began many years ago, and we have been committed to providing our customers with the best dining experience since then.</p>
+                <p>
+                    Welcome to Little Lemon, located in the heart of Chicago. Our restaurant offers
+                    a delightful array of meals prepared with love and care. Our story began many
+                    years ago, and we have been committed to providing our customers with the best
+                    dining experience since then.
+                </p>
             </div>
             <div className="about-us-images">
                 <div className="about-us-image first-image">

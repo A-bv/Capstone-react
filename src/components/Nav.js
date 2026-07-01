@@ -62,10 +62,22 @@ function Nav({ aboutUsRef }) {
             </button>
             {/* Navigation items */}
             <ul id="nav-items" className={`nav-items ${isMenuOpen ? 'active' : ''}`}>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/booking">Booking</Link></li>
-                <li><a href="#about" onClick={handleNavigationToAboutUs}>About</a></li>
-                <li><a href="#contact" onClick={handleContactClick}>Contact</a></li>
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/booking">Booking</Link>
+                </li>
+                <li>
+                    <a href="#about" onClick={handleNavigationToAboutUs}>
+                        About
+                    </a>
+                </li>
+                <li>
+                    <a href="#contact" onClick={handleContactClick}>
+                        Contact
+                    </a>
+                </li>
             </ul>
             {showModal && <ContactModal onClose={closeModal} />}
         </nav>

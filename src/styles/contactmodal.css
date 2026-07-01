@@ -32,7 +32,7 @@
 
 .close-btn {
     padding: 10px 20px;
-    background-color: #EE9972; /* Button background color */
+    background-color: #ee9972; /* Button background color */
     color: #fff; /* Button text color */
     border: none;
     border-radius: 4px;
@@ -41,5 +41,5 @@
 }
 
 .close-btn:hover {
-    background-color: #D88E68; /* Darker shade on hover */
+    background-color: #d88e68; /* Darker shade on hover */
 }

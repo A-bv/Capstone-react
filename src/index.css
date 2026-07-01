@@ -1,35 +1,34 @@
 :root {
-  /* Lock the page to a light theme so the browser's auto dark mode can't
+    /* Lock the page to a light theme so the browser's auto dark mode can't
      turn our backgrounds dark while leaving text dark (the contrast bug). */
-  color-scheme: light;
+    color-scheme: light;
 
-  /* Brand palette */
-  --color-bg: #ffffff;
-  --color-surface: #f0f0f0;
-  --color-surface-alt: #edefee;
-  --color-text: #333333;
-  --color-text-muted: #595959;
-  --color-primary: #495e57;
-  --color-accent: #f5d742;
+    /* Brand palette */
+    --color-bg: #ffffff;
+    --color-surface: #f0f0f0;
+    --color-surface-alt: #edefee;
+    --color-text: #333333;
+    --color-text-muted: #595959;
+    --color-primary: #495e57;
+    --color-accent: #f5d742;
 }
 
 body {
-  margin: 0;
-  background-color: var(--color-bg);
-  color: var(--color-text);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family:
+        -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell',
+        'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 /* Safety net: no image may overflow its container */
 img {
-  max-width: 100%;
+    max-width: 100%;
 }

@@ -12,7 +12,9 @@ function ConfirmedBooking() {
                     <h2>Booking Confirmed!</h2>
                     <p>Thank you — your reservation at Little Lemon has been confirmed.</p>
                     <p>We look forward to welcoming you.</p>
-                    <Link to="/" className="submit-btn">Back to Home</Link>
+                    <Link to="/" className="submit-btn">
+                        Back to Home
+                    </Link>
                 </section>
             </main>
         </div>

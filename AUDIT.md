@@ -97,7 +97,7 @@ These were surfaced by the new gate and set to `warn` so the baseline is green; 
 ## 3. Ranked action list (deepest gap first — the fix queue)
 
 1. **Stand up ESLint (react/react-hooks/jsx-a11y) + a `lint` script.** [L0] ✅ _done — ESLint 9 flat config, green baseline._
-2. **Add Prettier + format sweep** (config, `format`/`format:check` scripts, `eslint-config-prettier`, one `--write` pass). [L0] _(split out of #1 to keep diffs reviewable.)_
+2. **Add Prettier + format sweep** (config, `format`/`format:check` scripts, `eslint-config-prettier`, one `--write` pass). [L0] ✅ _done — 4-space/single-quote config matching existing style; JSON kept at 2-space; JS bundle hash unchanged._
 3. **Add a GitHub Actions CI workflow** running `lint → test → build` on push/PR. [L0]
 4. **Fix the past-date booking bug** (`min` + validation) and reject empty `time`. [L1] — the one real correctness hole in the core feature.
 5. **Deepen the tests**: assert valid submit calls `submitForm`, invalid submit is blocked, date-change updates times. [L1/L2]
