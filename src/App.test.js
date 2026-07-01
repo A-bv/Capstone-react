@@ -1,6 +1,6 @@
+import React, { act } from 'react';
 import { render, screen } from '@testing-library/react';
 import App from './App';
-import { act } from 'react'; // Update import for `act`
 
 test('renders home link', () => {
   // App already provides its own Router, so render it directly
