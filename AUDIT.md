@@ -101,7 +101,7 @@ These were surfaced by the new gate and set to `warn` so the baseline is green; 
 3. **Add a GitHub Actions CI workflow** running `lint → test → build` on push/PR. [L0] ✅ _done — `.github/workflows/ci.yml` on Node 22; also runs `format:check` (enforces #2). Full sequence verified locally incl. clean `npm ci`._
 4. **Fix the past-date booking bug** (`min` + validation) and reject empty `time`. [L1] ✅ _done — native `min` + React past-date validation (verified in browser: past date blocked, valid future booking still confirms). Empty-time guard added as defense; the mock never actually returns zero slots._
 5. **Deepen the tests**: assert valid submit calls `submitForm`, invalid submit is blocked, date-change updates times. [L1/L2] ✅ _done — refactored to a per-test render helper; added 4 behavior tests (valid submit payload, invalid submit blocked, past-date blocked, `UPDATE_TIMES` dispatched). Suite 8 → 12._
-6. **Fix README** (port 5173/base path, Vitest not Jest). [L2]
+6. **Fix README** (port 5173/base path, Vitest not Jest). [L2] ✅ _done — dev URL now `http://localhost:5173/Capstone-react/`; test runner named as Vitest._
 7. **Remove tutorial residue**: `reportWebVitals.js` + `web-vitals` dep, `// Add this line` comments, `App.test.js` placeholder comment; customize `manifest.json`. [L2]
 8. **Bump Vite 5→7 / Vitest 2→3** to clear the dev-toolchain advisories; re-run the suite. [L1]
 9. **Fix the lint-surfaced debt** and promote the 3 demoted rules back to `error`: derive time without an effect in `BookingForm` [L1]; rework `Nav` pendingScroll + modal overlay a11y alongside polish. [L3]

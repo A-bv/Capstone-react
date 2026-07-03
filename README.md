@@ -53,7 +53,7 @@ To get started with the Little Lemon Restaurant website, follow these steps:
     npm start
     ```
 
-    Your application will be available at `http://localhost:3000`.
+    Your application will be available at `http://localhost:5173/Capstone-react/`.
 
 ## Usage
 
@@ -65,7 +65,7 @@ Once the development server is running, you can:
 
 ## Tests
 
-Automated unit tests (React Testing Library + Jest) cover the booking form and routing. Run them with:
+Automated unit tests (React Testing Library + Vitest) cover the booking form and routing. Run them with:
 
 ```bash
 npm test
