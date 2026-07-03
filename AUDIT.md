@@ -44,8 +44,8 @@ For a repo positioned as depended-on, there is no automated gate that build/test
 **FIX-BEFORE-MERGE [L1 · Works→Correct] (Observed)** — **Booking form accepts past dates.** `src/components/BookingForm.js` — the date `InputField` has no `min`, and `validateField('date')` only checks non-empty (`:84`). You can reserve a table for yesterday. This is the core domain rule of a reservation app.
 → Set `min={todayISO}` on the date input and reject `date < today` in `validateField`.
 
-**FOLLOW-UP [L1 · Works→Correct] (Observed)** — **Time can submit empty and is never validated.** `fetchAPI` (`src/api.js`) can return `[]` for some dates (seeded random). When it does, `SelectField` renders no options, `formData.time` stays `''`, and `submitAPI` still returns `true` (`:35`). A reservation with no time succeeds.
-→ Validate `time` is non-empty; show a "no availability" state when `availableTimes` is empty.
+**FOLLOW-UP [L1 · Works→Correct] (Observed)** — ~~**Time can submit empty and is never validated.**~~ **Corrected:** I enumerated the seeded `fetchAPI` for every day-of-month (1–31); the minimum is **4** slots and it is **never empty**, and `time` always defaults to a valid slot. So an empty-time submission is **not reachable** via the current mock — the earlier claim is withdrawn.
+→ Still worth a defensive guard (the mock explicitly stands in for a real backend): `time`-required validation + a disabled "no availability" placeholder were added, but they are defensive, not fixing a live bug.
 
 **FOLLOW-UP [L1 · Works→Senior] (Observed)** — Dev-toolchain vulnerabilities: 1 critical (Vitest UI arbitrary file read/exec — UI server not used here), 1 high + 3 moderate (Vite/esbuild dev-server path traversal & request bypass). Verified all are dev-only; **none ship in the static `dist/` build**, so live-site risk is ~nil. But a depended-on repo should stay current.
 → Bump Vite 5→7 and Vitest 2→3 (`npm audit fix --force` equivalent), then re-run the suite.
@@ -99,7 +99,7 @@ These were surfaced by the new gate and set to `warn` so the baseline is green; 
 1. **Stand up ESLint (react/react-hooks/jsx-a11y) + a `lint` script.** [L0] ✅ _done — ESLint 9 flat config, green baseline._
 2. **Add Prettier + format sweep** (config, `format`/`format:check` scripts, `eslint-config-prettier`, one `--write` pass). [L0] ✅ _done — 4-space/single-quote config matching existing style; JSON kept at 2-space; JS bundle hash unchanged._
 3. **Add a GitHub Actions CI workflow** running `lint → test → build` on push/PR. [L0] ✅ _done — `.github/workflows/ci.yml` on Node 22; also runs `format:check` (enforces #2). Full sequence verified locally incl. clean `npm ci`._
-4. **Fix the past-date booking bug** (`min` + validation) and reject empty `time`. [L1] — the one real correctness hole in the core feature.
+4. **Fix the past-date booking bug** (`min` + validation) and reject empty `time`. [L1] ✅ _done — native `min` + React past-date validation (verified in browser: past date blocked, valid future booking still confirms). Empty-time guard added as defense; the mock never actually returns zero slots._
 5. **Deepen the tests**: assert valid submit calls `submitForm`, invalid submit is blocked, date-change updates times. [L1/L2]
 6. **Fix README** (port 5173/base path, Vitest not Jest). [L2]
 7. **Remove tutorial residue**: `reportWebVitals.js` + `web-vitals` dep, `// Add this line` comments, `App.test.js` placeholder comment; customize `manifest.json`. [L2]

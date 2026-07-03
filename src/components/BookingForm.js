@@ -3,6 +3,16 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/bookingform.css';
 
+// Local calendar date as YYYY-MM-DD, used to block reservations in the past.
+// Built from local date parts (not toISOString) so it is not shifted by the
+// timezone offset near midnight.
+const todayISO = () => {
+    const now = new Date();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    return `${now.getFullYear()}-${month}-${day}`;
+};
+
 const InputField = ({
     label,
     id,
@@ -39,33 +49,54 @@ const InputField = ({
     </div>
 );
 
-const SelectField = ({ label, id, name, value, onChange, options, error }) => (
-    <div className="form-group">
-        <label htmlFor={id}>{label}:</label>
-        <select
-            id={id}
-            name={name}
-            value={value}
-            onChange={onChange}
-            required
-            aria-invalid={error ? 'true' : 'false'}
-            aria-describedby={error ? `${id}-error` : undefined}
-        >
-            {options.map((option, index) => (
-                <option key={index} value={option}>
-                    {option}
-                </option>
-            ))}
-        </select>
-        {error && (
-            <p id={`${id}-error`} className="error-message" role="alert">
-                {error}
-            </p>
-        )}
-    </div>
-);
+const SelectField = ({
+    label,
+    id,
+    name,
+    value,
+    onChange,
+    onBlur,
+    options,
+    error,
+    emptyLabel = 'No options available',
+}) => {
+    const noOptions = options.length === 0;
+    return (
+        <div className="form-group">
+            <label htmlFor={id}>{label}:</label>
+            <select
+                id={id}
+                name={name}
+                value={value}
+                onChange={onChange}
+                onBlur={onBlur}
+                required
+                disabled={noOptions}
+                aria-invalid={error ? 'true' : 'false'}
+                aria-describedby={error ? `${id}-error` : undefined}
+            >
+                {noOptions ? (
+                    <option value="">{emptyLabel}</option>
+                ) : (
+                    options.map((option) => (
+                        <option key={option} value={option}>
+                            {option}
+                        </option>
+                    ))
+                )}
+            </select>
+            {error && (
+                <p id={`${id}-error`} className="error-message" role="alert">
+                    {error}
+                </p>
+            )}
+        </div>
+    );
+};
 
 const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
+    const minDate = todayISO();
+
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -87,6 +118,7 @@ const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
         name: '',
         email: '',
         date: '',
+        time: '',
         guests: '',
     });
 
@@ -102,7 +134,11 @@ const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
             case 'email':
                 return /\S+@\S+\.\S+/.test(value) ? '' : 'Email is invalid.';
             case 'date':
-                return value === '' ? 'Date is required.' : '';
+                if (value === '') return 'Date is required.';
+                if (value < minDate) return 'Date cannot be in the past.';
+                return '';
+            case 'time':
+                return value ? '' : 'Please choose a time.';
             case 'guests':
                 return value < 1 || value > 10 ? 'Number of guests must be between 1 and 10.' : '';
             default:
@@ -115,11 +151,12 @@ const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
             name: validateField('name', formData.name),
             email: validateField('email', formData.email),
             date: validateField('date', formData.date),
+            time: validateField('time', formData.time),
             guests: validateField('guests', formData.guests),
         };
 
         setErrors(newErrors);
-        setTouched({ name: true, email: true, date: true, guests: true });
+        setTouched({ name: true, email: true, date: true, time: true, guests: true });
         return Object.values(newErrors).every((error) => error === '');
     };
 
@@ -190,6 +227,7 @@ const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
                     onChange={handleChange}
                     onBlur={handleBlur} // Add this line
                     required
+                    min={minDate}
                     error={errors.date}
                 />
 
@@ -199,7 +237,10 @@ const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
                     name="time"
                     value={formData.time}
                     onChange={handleChange}
+                    onBlur={handleBlur}
                     options={availableTimes}
+                    error={errors.time}
+                    emptyLabel="No times available — choose another date"
                 />
 
                 <InputField
