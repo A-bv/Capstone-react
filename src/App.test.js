@@ -8,7 +8,6 @@ test('renders home link', () => {
         render(<App />);
     });
 
-    // Replace "learn react" with actual text from your App component
     const linkElement = screen.getByText(/home/i);
     expect(linkElement).toBeInTheDocument();
 });

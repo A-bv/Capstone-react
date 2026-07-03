@@ -201,7 +201,7 @@ const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
                     type="text"
                     value={formData.name}
                     onChange={handleChange}
-                    onBlur={handleBlur} // Add this line
+                    onBlur={handleBlur}
                     required
                     error={errors.name}
                 />
@@ -213,7 +213,7 @@ const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
                     type="email"
                     value={formData.email}
                     onChange={handleChange}
-                    onBlur={handleBlur} // Add this line
+                    onBlur={handleBlur}
                     required
                     error={errors.email}
                 />
@@ -225,7 +225,7 @@ const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
                     type="date"
                     value={formData.date}
                     onChange={handleChange}
-                    onBlur={handleBlur} // Add this line
+                    onBlur={handleBlur}
                     required
                     min={minDate}
                     error={errors.date}
@@ -250,7 +250,7 @@ const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
                     type="number"
                     value={formData.guests}
                     onChange={handleChange}
-                    onBlur={handleBlur} // Add this line
+                    onBlur={handleBlur}
                     min="1"
                     max="10"
                     required
