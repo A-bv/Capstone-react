@@ -28,6 +28,11 @@
 
 .nav-items a,
 .nav-items button {
+    /* inline-flex + centered content keeps links (inline) and buttons
+       (inline-block) on the same baseline and the same box height */
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
     text-decoration: none;
     color: #fff;
     font-size: 1.1em;
