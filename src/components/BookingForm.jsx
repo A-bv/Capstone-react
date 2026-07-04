@@ -1,6 +1,6 @@
 // src/components/BookingForm.js
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../styles/bookingform.css';
 
 // Local calendar date as YYYY-MM-DD, used to block reservations in the past.
@@ -106,13 +106,13 @@ const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
         occasion: 'Birthday', // Default occasion
     });
 
-    // Keep the selected time valid whenever the available slots change
-    useEffect(() => {
-        if (availableTimes.length && !availableTimes.includes(formData.time)) {
-            setFormData((prev) => ({ ...prev, time: availableTimes[0] }));
-        }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [availableTimes]);
+    // The chosen time, clamped to the slots currently on offer. Derived during
+    // render (no effect needed): if the stored choice is no longer available —
+    // e.g. after the date changed — fall back to the first open slot.
+    const selectedTime =
+        formData.time && availableTimes.includes(formData.time)
+            ? formData.time
+            : (availableTimes[0] ?? '');
 
     const [errors, setErrors] = useState({
         name: '',
@@ -151,7 +151,7 @@ const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
             name: validateField('name', formData.name),
             email: validateField('email', formData.email),
             date: validateField('date', formData.date),
-            time: validateField('time', formData.time),
+            time: validateField('time', selectedTime),
             guests: validateField('guests', formData.guests),
         };
 
@@ -186,7 +186,7 @@ const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (validateForm() && submitForm) {
-            submitForm(formData);
+            submitForm({ ...formData, time: selectedTime });
         }
     };
 
@@ -235,7 +235,7 @@ const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
                     label="Choose time"
                     id="res-time"
                     name="time"
-                    value={formData.time}
+                    value={selectedTime}
                     onChange={handleChange}
                     onBlur={handleBlur}
                     options={availableTimes}

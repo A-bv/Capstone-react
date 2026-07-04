@@ -70,8 +70,7 @@ For a repo positioned as depended-on, there is no automated gate that build/test
 
 These were surfaced by the new gate and set to `warn` so the baseline is green; each is promoted back to `error` when fixed.
 
-**FOLLOW-UP [L1 · Works→Senior] (Observed)** — `react-hooks/set-state-in-effect` at `BookingForm.js:61`. The "keep selected time valid" effect calls `setFormData` synchronously in an effect body — a cascading-render smell. The value is derivable from `availableTimes` without an effect.
-→ Derive the selected time during render / on the availableTimes change instead of syncing via effect.
+**RESOLVED [L1 · Works→Senior] (Observed)** — ~~`react-hooks/set-state-in-effect` at `BookingForm.js:61`~~. The "keep selected time valid" effect called `setFormData` synchronously in an effect body (cascading-render smell). **Fixed:** the effect is gone; the selected time is now derived during render (`selectedTime`, clamped to `availableTimes`) and used for the field value, validation, and the submit payload. Verified in-browser: the shown time is always a valid slot across date changes. Rule promoted to `error` once Nav's violation is also cleared.
 
 **FOLLOW-UP [L3 · Works→Senior] (Observed)** — `react-hooks/set-state-in-effect` at `Nav.js:28`. The deferred-scroll effect sets `pendingScroll(false)` inside the effect. Tied to the `#about` anchor navigation pattern.
 → Rework alongside the anchor→button change (L3 polish item).
