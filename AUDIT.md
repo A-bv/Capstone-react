@@ -36,8 +36,7 @@ For a repo positioned as depended-on, there is no automated gate that build/test
 > - Prettier is **split into its own finding** (see ranked list): a `--write` sweep rewrites every file's indentation and would bury the gate setup in an unreviewable diff.
 > - New violations surfaced and demoted to warnings for a green baseline — see **Lint-surfaced debt** below.
 
-**DON'T-BLOCK [L0] (Observed)** — JavaScript, not TypeScript, with JSX in `.js` files requiring an esbuild loader hack in `vite.config.mjs`. Not a defect, but a 2026 top-tier React showcase is typically TS (or at least `.jsx`). Positioning/taste.
-→ Optional: migrate to `.jsx`/TS if you want the piece to read current.
+**RESOLVED [L0] (Observed)** — JSX used to live in `.js` files, needing an esbuild loader hack in `vite.config.mjs`. This was fine on esbuild-based Vite (≤7) but Vite 8 replaces esbuild with Rolldown/oxc, which ignores the hack (`JSX syntax is disabled`). **Fixed (see #11):** the 14 JSX-bearing files were renamed to `.jsx` and the loader hack removed, so Vite handles them natively — unblocking the Vite 8 upgrade in #8. (TypeScript remains a further, optional modernization.)
 
 ### L1 — Behavior / Correctness
 
@@ -103,9 +102,10 @@ These were surfaced by the new gate and set to `warn` so the baseline is green; 
 5. **Deepen the tests**: assert valid submit calls `submitForm`, invalid submit is blocked, date-change updates times. [L1/L2] ✅ _done — refactored to a per-test render helper; added 4 behavior tests (valid submit payload, invalid submit blocked, past-date blocked, `UPDATE_TIMES` dispatched). Suite 8 → 12._
 6. **Fix README** (port 5173/base path, Vitest not Jest). [L2] ✅ _done — dev URL now `http://localhost:5173/Capstone-react/`; test runner named as Vitest._
 7. **Remove tutorial residue**: `reportWebVitals.js` + `web-vitals` dep, `// Add this line` comments, `App.test.js` placeholder comment; customize `manifest.json`. [L2] ✅ _done — deleted the dead file + unused dep (bundle hash unchanged, proving it was dead), stripped the stray comments, and set the manifest + theme-color to the Little Lemon identity/brand green._
-8. **Bump Vite 5→7 / Vitest 2→3** to clear the dev-toolchain advisories; re-run the suite. [L1]
+8. **Bump Vite 5→7 / Vitest 2→3** to clear the dev-toolchain advisories; re-run the suite. [L1] ✅ _done — went to Vite 7.3 + plugin-react 5 + Vitest 4 (latest compatible); `npm audit` now reports 0 vulnerabilities, 12/12 tests + build + browser smoke all green. Vite 8 was attempted first but blocked — see note below._
 9. **Fix the lint-surfaced debt** and promote the 3 demoted rules back to `error`: derive time without an effect in `BookingForm` [L1]; rework `Nav` pendingScroll + modal overlay a11y alongside polish. [L3]
 10. **Polish**: modal focus trap + focus restore + close-on-route-change; rating `aria-label`; convert `#about`/`#contact` anchors to buttons + add catch-all route; dynamic footer year. [L3]
+11. **Rename JSX-bearing `.js` files to `.jsx`** (drop the esbuild loader hack) to unblock Vite 8+. [L0] ✅ _done — 14 JSX files renamed (imports are extensionless, so no import edits); `vite.config.mjs` loader hack removed; verified 12/12 tests + identical build on Vite 5. Unblocks the Vite 8 bump in #8._
 
 ---
 
