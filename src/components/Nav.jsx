@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import '../styles/nav.css';
 import logo from '../assets/Logo.svg';
@@ -7,7 +7,8 @@ import ContactModal from './ContactModal';
 function Nav({ aboutUsRef }) {
     const [showModal, setShowModal] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const [pendingScroll, setPendingScroll] = useState(false);
+    // A plain flag, not state: flipping it should not trigger a re-render.
+    const pendingScroll = useRef(false);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -15,26 +16,23 @@ function Nav({ aboutUsRef }) {
         setShowModal(true);
     };
 
-    const scrollToAboutUsWithAnimation = () => {
-        if (aboutUsRef.current) {
-            aboutUsRef.current.scrollIntoView({ behavior: 'smooth' });
-        }
-    };
+    const scrollToAboutUs = useCallback(() => {
+        aboutUsRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, [aboutUsRef]);
 
-    // Scroll once we have actually landed on the home page (after navigation)
+    // Scroll once we have actually landed on the home page (after navigation).
     useEffect(() => {
-        if (pendingScroll && location.pathname === '/') {
-            scrollToAboutUsWithAnimation();
-            setPendingScroll(false);
+        if (pendingScroll.current && location.pathname === '/') {
+            scrollToAboutUs();
+            pendingScroll.current = false;
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [pendingScroll, location.pathname]);
+    }, [location.pathname, scrollToAboutUs]);
 
     const handleNavigationToAboutUs = () => {
         if (location.pathname === '/') {
-            scrollToAboutUsWithAnimation();
+            scrollToAboutUs();
         } else {
-            setPendingScroll(true);
+            pendingScroll.current = true;
             navigate('/');
         }
     };
@@ -69,14 +67,14 @@ function Nav({ aboutUsRef }) {
                     <Link to="/booking">Booking</Link>
                 </li>
                 <li>
-                    <a href="#about" onClick={handleNavigationToAboutUs}>
+                    <button type="button" onClick={handleNavigationToAboutUs}>
                         About
-                    </a>
+                    </button>
                 </li>
                 <li>
-                    <a href="#contact" onClick={handleContactClick}>
+                    <button type="button" onClick={handleContactClick}>
                         Contact
-                    </a>
+                    </button>
                 </li>
             </ul>
             {showModal && <ContactModal onClose={closeModal} />}

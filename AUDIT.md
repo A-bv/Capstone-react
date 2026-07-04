@@ -72,16 +72,14 @@ These were surfaced by the new gate and set to `warn` so the baseline is green; 
 
 **RESOLVED [L1 · Works→Senior] (Observed)** — ~~`react-hooks/set-state-in-effect` at `BookingForm.js:61`~~. The "keep selected time valid" effect called `setFormData` synchronously in an effect body (cascading-render smell). **Fixed:** the effect is gone; the selected time is now derived during render (`selectedTime`, clamped to `availableTimes`) and used for the field value, validation, and the submit payload. Verified in-browser: the shown time is always a valid slot across date changes. Rule promoted to `error` once Nav's violation is also cleared.
 
-**FOLLOW-UP [L3 · Works→Senior] (Observed)** — `react-hooks/set-state-in-effect` at `Nav.js:28`. The deferred-scroll effect sets `pendingScroll(false)` inside the effect. Tied to the `#about` anchor navigation pattern.
-→ Rework alongside the anchor→button change (L3 polish item).
+**RESOLVED [L3 · Works→Senior] (Observed)** — ~~`react-hooks/set-state-in-effect` at `Nav.js:28`~~. The deferred-scroll effect set `pendingScroll(false)` inside the effect. **Fixed:** `pendingScroll` is now a `useRef` (flipping it shouldn't re-render), and the scroll helper is memoized so the effect deps are honest (the `exhaustive-deps` disable is gone too). With BookingForm's fix, `react-hooks/set-state-in-effect` is promoted back to `error`.
 
 **FOLLOW-UP [L3 · Works→Senior] (Observed)** — `jsx-a11y/click-events-have-key-events` + `jsx-a11y/no-static-element-interactions` at `ContactModal.js:29`. The overlay `<div onClick=…>` (click-outside-to-close) has no keyboard equivalent / role. Folds into the modal-a11y polish item.
 → Add keyboard affordance or move dismissal to a real control; part of the modal focus-trap work.
 
 ### L3 — Polish
 
-**DON'T-BLOCK [L3] (Observed, verified in browser)** — `Nav` "About"/"Contact" use `<a href="#about">` / `#contact` under `HashRouter`. These are semantically wrong (they mutate the routing hash as a side effect) and rely on the `onClick` handler with no `preventDefault`. I verified the live behavior: React Router normalizes the stray hash and **the page does not blank** — home content stays fully mounted — so this is fragile, not broken.
-→ Make them `<button type="button">` (or add `e.preventDefault()`), and add a catch-all `<Route path="*">` for safety.
+**RESOLVED [L3] (Observed, verified in browser)** — `Nav` "About"/"Contact" used `<a href="#about">` / `#contact` under `HashRouter`, mutating the routing hash as a side effect. **Fixed:** both are now `<button type="button">` (styled to match the links — computed styles verified identical), so no stray hash mutation; and a catch-all `<Route path="*">` now redirects unknown paths home (verified: a bogus hash lands back on home).
 
 **DON'T-BLOCK [L3] (Observed, verified)** — `ContactModal` moves focus in correctly and closes on Escape/overlay, but Tab focus is **not trapped** (can leave to background content), focus isn't restored to the trigger on close, and the modal doesn't close on route change (state lives in `Nav`, which doesn't unmount). Solid baseline, missing the last mile of dialog a11y.
 → Add a focus trap + focus restore; close modal on `location` change.

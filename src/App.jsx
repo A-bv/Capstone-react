@@ -1,7 +1,7 @@
 // src/App.js
 
 import React, { useRef } from 'react';
-import { HashRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Main from './components/Main';
@@ -24,6 +24,7 @@ function App() {
                     <Route path="/" element={<HomePageScreen aboutUsRef={aboutUsRef} />} />
                     <Route path="/booking" element={<BookingPage />} />
                     <Route path="/confirmed" element={<ConfirmedBooking />} />
+                    <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
                 <Footer />
             </div>

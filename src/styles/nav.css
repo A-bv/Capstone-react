@@ -26,15 +26,22 @@
     margin: 0;
 }
 
-.nav-items a {
+.nav-items a,
+.nav-items button {
     text-decoration: none;
     color: #fff;
     font-size: 1.1em;
     padding: 10px 15px;
     transition: all 0.3s ease;
+    /* Reset button defaults so the About/Contact buttons match the links */
+    background: none;
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
 }
 
-.nav-items a:hover {
+.nav-items a:hover,
+.nav-items button:hover {
     background-color: #5a9c69; /* Darker green on hover */
     border-radius: 5px;
 }

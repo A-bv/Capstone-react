@@ -37,7 +37,6 @@ export default [
             // Pre-existing violations demoted to warnings so the gate is green
             // on adoption; each is tracked in AUDIT.md and promoted back to
             // error when its dedicated fix lands.
-            'react-hooks/set-state-in-effect': 'warn',
             'jsx-a11y/click-events-have-key-events': 'warn',
             'jsx-a11y/no-static-element-interactions': 'warn',
         },
