@@ -82,9 +82,9 @@ These were surfaced by the new gate and set to `warn` so the baseline is green; 
 
 **RESOLVED [L3] (Observed, verified in browser)** — `ContactModal` moved focus in and closed on Escape/overlay, but Tab focus was **not trapped**, focus wasn't restored to the trigger on close, and it didn't close on route change. **Fixed:** added a Tab focus trap (verified — Tab stays in the dialog) and focus restore to the trigger on close (standard save-`activeElement`/restore pattern; correct by construction but not verifiable in the headless preview, which can't own OS focus). **Close-on-route-change deliberately skipped:** the full-screen overlay already blocks background nav, so it would only matter for browser back/forward, and a clean implementation would reintroduce the exact set-state-in-effect just removed — not worth it for that edge.
 
-**DON'T-BLOCK [L3] (Observed)** — `Testimonials` renders rating as bare `★` glyphs (`renderStars`, `:49`) with no `aria-label` (e.g. "4 out of 5 stars"). Screen readers get symbols, not meaning.
+**RESOLVED [L3] (Observed, verified)** — `Testimonials` rendered ratings as bare `★` glyphs with no `aria-label`. **Fixed:** the rating wrapper is now `role="img"` with an `aria-label` like "4 out of 5 stars" (verified in-browser), so screen readers get meaning, not symbols.
 
-**DON'T-BLOCK [L3] (Observed)** — Minor taste: `SelectField` uses `key={index}` (`BookingForm.js:39`); `Footer` hardcodes `© 2024`. Trivial.
+**RESOLVED [L3] (Observed, verified)** — Minor taste: `SelectField` used `key={index}` (fixed in #4 → `key={option}`); `Footer` hardcoded `© 2024` (now `© {current year}`, verified showing 2026).
 
 ---
 

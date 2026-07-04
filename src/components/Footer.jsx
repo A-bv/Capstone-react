@@ -5,7 +5,7 @@ import '../styles/footer.css';
 function Footer() {
     return (
         <footer className="footer">
-            <p>© 2024 Little Lemon</p>
+            <p>© {new Date().getFullYear()} Little Lemon</p>
         </footer>
     );
 }

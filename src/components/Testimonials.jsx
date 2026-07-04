@@ -37,7 +37,11 @@ function Testimonials() {
                         <div className="testimonial-details">
                             <h3>{testimonial.name}</h3>
                             <p>{testimonial.comment}</p>
-                            <div className="testimonial-rating">
+                            <div
+                                className="testimonial-rating"
+                                role="img"
+                                aria-label={`${testimonial.rating} out of 5 stars`}
+                            >
                                 {renderStars(testimonial.rating)}
                             </div>
                         </div>
