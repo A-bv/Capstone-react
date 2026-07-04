@@ -1,5 +1,3 @@
-// ContactModal.jsx
-
 import React, { useEffect, useRef } from 'react';
 import '../styles/contactmodal.css';
 

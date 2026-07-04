@@ -1,5 +1,3 @@
-// src/App.js
-
 import React, { useRef } from 'react';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';

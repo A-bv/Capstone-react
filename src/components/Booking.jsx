@@ -1,5 +1,3 @@
-// src/components/Booking.js
-
 import React, { useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BookingForm from './BookingForm';

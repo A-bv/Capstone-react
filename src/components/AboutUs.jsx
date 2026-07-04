@@ -1,5 +1,3 @@
-// AboutUs.js
-
 import React from 'react';
 import '../styles/aboutus.css';
 import restaurantInterior from '../assets/teama.jpg';

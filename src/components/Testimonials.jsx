@@ -1,4 +1,3 @@
-// Testimonials.js
 import React from 'react';
 import '../styles/testimonials.css';
 import customerImage1 from '../assets/customer1.jpg';
