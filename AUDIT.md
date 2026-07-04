@@ -74,15 +74,13 @@ These were surfaced by the new gate and set to `warn` so the baseline is green; 
 
 **RESOLVED [L3 · Works→Senior] (Observed)** — ~~`react-hooks/set-state-in-effect` at `Nav.js:28`~~. The deferred-scroll effect set `pendingScroll(false)` inside the effect. **Fixed:** `pendingScroll` is now a `useRef` (flipping it shouldn't re-render), and the scroll helper is memoized so the effect deps are honest (the `exhaustive-deps` disable is gone too). With BookingForm's fix, `react-hooks/set-state-in-effect` is promoted back to `error`.
 
-**FOLLOW-UP [L3 · Works→Senior] (Observed)** — `jsx-a11y/click-events-have-key-events` + `jsx-a11y/no-static-element-interactions` at `ContactModal.js:29`. The overlay `<div onClick=…>` (click-outside-to-close) has no keyboard equivalent / role. Folds into the modal-a11y polish item.
-→ Add keyboard affordance or move dismissal to a real control; part of the modal focus-trap work.
+**RESOLVED [L3 · Works→Senior] (Observed)** — ~~`jsx-a11y/click-events-have-key-events` + `jsx-a11y/no-static-element-interactions` at `ContactModal.js:29`~~. The overlay `<div onClick=…>` had no keyboard equivalent / role. **Fixed:** the backdrop-click handler is now attached imperatively in an effect (not a JSX prop), since backdrop click is a mouse-only affordance and keyboard users dismiss via Escape / the Close button / the focus trap. Both rules are promoted back to `error`; the lint gate is now fully clean at recommended severity.
 
 ### L3 — Polish
 
 **RESOLVED [L3] (Observed, verified in browser)** — `Nav` "About"/"Contact" used `<a href="#about">` / `#contact` under `HashRouter`, mutating the routing hash as a side effect. **Fixed:** both are now `<button type="button">` (styled to match the links — computed styles verified identical), so no stray hash mutation; and a catch-all `<Route path="*">` now redirects unknown paths home (verified: a bogus hash lands back on home).
 
-**DON'T-BLOCK [L3] (Observed, verified)** — `ContactModal` moves focus in correctly and closes on Escape/overlay, but Tab focus is **not trapped** (can leave to background content), focus isn't restored to the trigger on close, and the modal doesn't close on route change (state lives in `Nav`, which doesn't unmount). Solid baseline, missing the last mile of dialog a11y.
-→ Add a focus trap + focus restore; close modal on `location` change.
+**RESOLVED [L3] (Observed, verified in browser)** — `ContactModal` moved focus in and closed on Escape/overlay, but Tab focus was **not trapped**, focus wasn't restored to the trigger on close, and it didn't close on route change. **Fixed:** added a Tab focus trap (verified — Tab stays in the dialog) and focus restore to the trigger on close (standard save-`activeElement`/restore pattern; correct by construction but not verifiable in the headless preview, which can't own OS focus). **Close-on-route-change deliberately skipped:** the full-screen overlay already blocks background nav, so it would only matter for browser back/forward, and a clean implementation would reintroduce the exact set-state-in-effect just removed — not worth it for that edge.
 
 **DON'T-BLOCK [L3] (Observed)** — `Testimonials` renders rating as bare `★` glyphs (`renderStars`, `:49`) with no `aria-label` (e.g. "4 out of 5 stars"). Screen readers get symbols, not meaning.
 
@@ -100,7 +98,7 @@ These were surfaced by the new gate and set to `warn` so the baseline is green; 
 6. **Fix README** (port 5173/base path, Vitest not Jest). [L2] ✅ _done — dev URL now `http://localhost:5173/Capstone-react/`; test runner named as Vitest._
 7. **Remove tutorial residue**: `reportWebVitals.js` + `web-vitals` dep, `// Add this line` comments, `App.test.js` placeholder comment; customize `manifest.json`. [L2] ✅ _done — deleted the dead file + unused dep (bundle hash unchanged, proving it was dead), stripped the stray comments, and set the manifest + theme-color to the Little Lemon identity/brand green._
 8. **Bump Vite / Vitest** to clear the dev-toolchain advisories; re-run the suite. [L1] ✅ _done — went to the latest: Vite 8.1 + plugin-react 6 + Vitest 4 (enabled by the `.jsx` rename in #11). `npm audit` now reports 0 vulnerabilities; 12/12 tests + build + browser smoke all green._
-9. **Fix the lint-surfaced debt** and promote the 3 demoted rules back to `error`: derive time without an effect in `BookingForm` [L1]; rework `Nav` pendingScroll + modal overlay a11y alongside polish. [L3]
+9. **Fix the lint-surfaced debt** and promote the 3 demoted rules back to `error`: derive time without an effect in `BookingForm` [L1]; rework `Nav` pendingScroll + modal overlay a11y alongside polish. [L3] ✅ _done — all 3 rules resolved and promoted; **lint gate is now fully clean at recommended severity, no warnings, no disables.**_
 10. **Polish**: modal focus trap + focus restore + close-on-route-change; rating `aria-label`; convert `#about`/`#contact` anchors to buttons + add catch-all route; dynamic footer year. [L3]
 11. **Rename JSX-bearing `.js` files to `.jsx`** (drop the esbuild loader hack) to unblock Vite 8+. [L0] ✅ _done — 14 JSX files renamed (imports are extensionless, so no import edits); `vite.config.mjs` loader hack removed; verified 12/12 tests + identical build on Vite 5. Unblocks the Vite 8 bump in #8._
 
