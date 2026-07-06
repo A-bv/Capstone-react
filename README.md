@@ -1,118 +1,50 @@
-# Little Lemon Restaurant
+# Little Lemon (Web)
 
-Welcome to this Little Lemon Restaurant Project! A modern web application built using React.js, providing customers a way to book reservations, explore daily specials, read testimonials, and learn more about the restaurant. This project is part of the Meta Frontend Developer certification.
+A restaurant website built with React: browse the highlights and testimonials, then book a table with a validated reservation form. Part of the Meta Front-End Developer certification, and one of three Little Lemon capstones — see the [iOS](https://github.com/A-bv/Capstone-iOS) and [React Native](https://github.com/A-bv/Capstone-react-native) versions.
 
-## Check the website out live!
-https://a-bv.github.io/Capstone-react/
+**Live site: [a-bv.github.io/Capstone-react](https://a-bv.github.io/Capstone-react/)**
 
-## Project Overview
-
-The Little Lemon Restaurant website is designed to showcase highlights, allowing users to make reservations, and provide information about the restaurant. It includes:
-
-- **Home Page:** Showcasing the Little Lemon Restaurant's products with different sections.
-- **Highlights Section:** Featuring daily specials.
-- **Testimonials Section:** Customer reviews and ratings.
-- **About Us Section:** Information about our restaurant's history and interior.
-- **Header and Footer Section:** Consistent navigation and branding throughout the site.
-- **Booking Page:** A reservation form for customers to book a table.
+[![CI](https://github.com/A-bv/Capstone-react/actions/workflows/ci.yml/badge.svg)](https://github.com/A-bv/Capstone-react/actions/workflows/ci.yml)
+![React](https://img.shields.io/badge/React-Vite-61DAFB?logo=react&logoColor=black)
+[![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey)](LICENSE)
 
 ## Features
 
-- **Responsive Design:** Optimized for both mobile and desktop views.
-- **Form Validation:** Ensures accurate user inputs in the booking form.
-- **Dynamic Navigation:** Smooth scrolling and modal pop-ups for contact information.
-- **UI/UX:** Follows prototype and easy to use (Figma `.fig` file included in the repository).
+- **Home page** — hero, daily specials, customer testimonials, and an about section.
+- **Booking page** — a reservation form with field validation.
+- **Responsive design** — optimized for both mobile and desktop views.
+- **Dynamic navigation** — smooth scrolling and modal pop-ups for contact information.
+- **Follows the prototype** — the Figma file (`wireframe-little-lemon-react.fig`) is included in the repository.
 
-## Installation
+## Build & run
 
-To get started with the Little Lemon Restaurant website, follow these steps:
+Requires Node.js and npm.
 
-1. **Clone the Repository:**
+```bash
+git clone https://github.com/A-bv/Capstone-react.git
+cd Capstone-react
+npm install
+npm start
+```
 
-    ```bash
-    git clone https://github.com/A-bv/Capstone-react.git
-    ```
-
-2. **Navigate to the Project Directory:**
-
-    ```bash
-    cd Capstone-react
-    ```
-
-3. **Install Dependencies:**
-
-    Make sure you have Node.js and npm installed. Then, run:
-
-    ```bash
-    npm install
-    ```
-
-4. **Start the Development Server:**
-
-    ```bash
-    npm start
-    ```
-
-    Your application will be available at `http://localhost:5173/Capstone-react/`.
-
-## Usage
-
-Once the development server is running, you can:
-
-- **Inspect the website:** Browse the home page and see how it responds to different screen sizes.
-- **Check the navigation:** See how the navigation bar adapts to different screen sizes and perform actions.
-- **Book a Table:** Fill out the reservation form on the Booking page and test field validation.
+The site runs at `http://localhost:5173/Capstone-react/`.
 
 ## Tests
 
-Automated unit tests (React Testing Library + Vitest) cover the booking form and routing. Run them with:
+Automated unit tests (React Testing Library + Vitest) cover the booking form and routing. CI also checks formatting and linting on every push.
 
 ```bash
 npm test
 ```
 
-## Deployment
+## Deploy
 
-The site is deployed to GitHub Pages with:
+The site is published to GitHub Pages with:
 
 ```bash
 npm run deploy
 ```
 
-## Contributing
-
-Contributions to this Little Lemon Restaurant website are welcome! If you would like to contribute, please follow these guidelines:
-
-1. **Fork the Repository**
-2. **Create a New Branch**
-
-    ```bash
-    git checkout -b feature/your-feature
-    ```
-
-3. **Make Your Changes**
-4. **Commit Your Changes**
-
-    ```bash
-    git commit -am 'Add new feature'
-    ```
-
-5. **Push to the Branch**
-
-    ```bash
-    git push origin feature/your-feature
-    ```
-
-6. **Create a Pull Request**
-
-    Submit a pull request detailing your changes and any relevant information.
-
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## Acknowledgments
-
-- [React.js](https://reactjs.org/) - A JavaScript library for building user interfaces.
-- [React Router](https://reactrouter.com/) - Declarative routing for React.js.
-- [CSS Flexbox](https://css-tricks.com/snippets/css/a-guide-to-flexbox/) - Layout model for creating responsive designs.
+MIT. See [LICENSE](LICENSE).
