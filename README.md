@@ -45,6 +45,11 @@ The site is published to GitHub Pages with:
 npm run deploy
 ```
 
+## Engineering notes
+
+Scripts, project structure, accessibility, testing, and the roadmap:
+[docs/ENGINEERING.md](docs/ENGINEERING.md).
+
 ## License
 
 MIT. See [LICENSE](LICENSE).
