@@ -14,12 +14,22 @@ function Main() {
 
             <section className="article-section">
                 <article className="article">
-                    <img src={pitaImage} alt="Pita Bread" className="article-image" />
+                    <img
+                        src={pitaImage}
+                        alt="Pita Bread"
+                        className="article-image"
+                        loading="lazy"
+                    />
                     <h3>Pita Bread</h3>
                     <p>Traditional soft and chewy pita bread, perfect for wraps and dips.</p>
                 </article>
                 <article className="article">
-                    <img src={greekImage} alt="Greek Salad" className="article-image" />
+                    <img
+                        src={greekImage}
+                        alt="Greek Salad"
+                        className="article-image"
+                        loading="lazy"
+                    />
                     <h3>Greek Salad</h3>
                     <p>
                         Fresh and colorful Greek salad with olives, feta cheese, and a zesty
@@ -27,17 +37,27 @@ function Main() {
                     </p>
                 </article>
                 <article className="article">
-                    <img src={humusImage} alt="Hummus" className="article-image" />
+                    <img src={humusImage} alt="Hummus" className="article-image" loading="lazy" />
                     <h3>Hummus</h3>
                     <p>Smooth and creamy chickpea dip, seasoned with garlic, lemon, and tahini.</p>
                 </article>
                 <article className="article">
-                    <img src={dessertImage} alt="Dessert" className="article-image" />
+                    <img
+                        src={dessertImage}
+                        alt="Dessert"
+                        className="article-image"
+                        loading="lazy"
+                    />
                     <h3>Desserts</h3>
                     <p>Sweet and decadent dessert, perfect for satisfying your sweet tooth.</p>
                 </article>
                 <article className="article">
-                    <img src={brochetteImage} alt="Skewers" className="article-image" />
+                    <img
+                        src={brochetteImage}
+                        alt="Skewers"
+                        className="article-image"
+                        loading="lazy"
+                    />
                     <h3>Skewers</h3>
                     <p>
                         Grilled skewers of marinated meat and vegetables, a flavorful dish for any

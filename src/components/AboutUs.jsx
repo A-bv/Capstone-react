@@ -17,10 +17,14 @@ function AboutUs() {
             </div>
             <div className="about-us-images">
                 <div className="about-us-image first-image">
-                    <img src={restaurantInterior} alt="Interior view of Little Lemon restaurant" />
+                    <img
+                        src={restaurantInterior}
+                        alt="Interior view of Little Lemon restaurant"
+                        loading="lazy"
+                    />
                 </div>
                 <div className="about-us-image second-image">
-                    <img src={secondImage} alt="Another view of the restaurant" />
+                    <img src={secondImage} alt="Another view of the restaurant" loading="lazy" />
                 </div>
             </div>
         </section>

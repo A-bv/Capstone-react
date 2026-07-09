@@ -31,7 +31,7 @@ function Testimonials() {
                 {testimonialsData.map((testimonial) => (
                     <div key={testimonial.id} className="testimonial">
                         <div className="testimonial-image">
-                            <img src={testimonial.image} alt={testimonial.name} />
+                            <img src={testimonial.image} alt={testimonial.name} loading="lazy" />
                         </div>
                         <div className="testimonial-details">
                             <h3>{testimonial.name}</h3>
