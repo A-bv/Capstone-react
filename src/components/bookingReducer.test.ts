@@ -1,4 +1,4 @@
-import { initializeTimes, updateTimes } from './bookingReducer';
+import { initializeTimes, updateTimes, type TimesAction } from './bookingReducer';
 
 describe('Booking times reducer', () => {
     test('initializeTimes returns a non-empty list of available times', () => {
@@ -15,6 +15,8 @@ describe('Booking times reducer', () => {
 
     test('updateTimes returns the current state for an unknown action', () => {
         const state = ['17:00', '18:00'];
-        expect(updateTimes(state, { type: 'UNKNOWN' })).toBe(state);
+        // Deliberately out-of-contract action to exercise the default branch.
+        const unknownAction = { type: 'UNKNOWN' } as unknown as TimesAction;
+        expect(updateTimes(state, unknownAction)).toBe(state);
     });
 });

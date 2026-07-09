@@ -13,10 +13,6 @@
     "skipLibCheck": true,
     "noEmit": true,
 
-    /* allow the not-yet-converted .jsx files during the migration */
-    "allowJs": true,
-    "checkJs": false,
-
     /* strictness */
     "strict": true,
     "noUnusedLocals": true,

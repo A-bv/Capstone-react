@@ -1,8 +1,15 @@
-import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
+import type { Dispatch } from 'react';
 import BookingForm from './BookingForm';
+import type { TimesAction } from './bookingReducer';
+import type { BookingFormData } from '../api';
 
-const renderForm = (props = {}) =>
+interface RenderProps {
+    dispatch?: Dispatch<TimesAction>;
+    submitForm?: (formData: BookingFormData) => boolean;
+}
+
+const renderForm = (props: RenderProps = {}) =>
     render(
         <BookingForm
             availableTimes={['17:00', '18:00', '19:00']}
@@ -80,7 +87,7 @@ describe('BookingForm Component', () => {
         fireEvent.change(screen.getByLabelText(/choose time/i), { target: { value: '18:00' } });
         fireEvent.change(screen.getByLabelText(/number of guests/i), { target: { value: '2' } });
 
-        fireEvent.submit(container.querySelector('.booking-form'));
+        fireEvent.submit(container.querySelector('.booking-form')!);
 
         expect(submitForm).toHaveBeenCalledTimes(1);
         expect(submitForm).toHaveBeenCalledWith({
@@ -97,7 +104,7 @@ describe('BookingForm Component', () => {
         const submitForm = vi.fn();
         const { container } = renderForm({ submitForm });
 
-        fireEvent.submit(container.querySelector('.booking-form'));
+        fireEvent.submit(container.querySelector('.booking-form')!);
 
         expect(submitForm).not.toHaveBeenCalled();
         expect(screen.getByText(/name is invalid/i)).toBeInTheDocument();
@@ -117,7 +124,7 @@ describe('BookingForm Component', () => {
             target: { value: '2000-01-01' },
         });
 
-        fireEvent.submit(container.querySelector('.booking-form'));
+        fireEvent.submit(container.querySelector('.booking-form')!);
 
         expect(submitForm).not.toHaveBeenCalled();
         expect(screen.getByText(/date cannot be in the past/i)).toBeInTheDocument();
