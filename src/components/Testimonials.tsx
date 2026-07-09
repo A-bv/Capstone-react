@@ -1,9 +1,16 @@
-import React from 'react';
 import '../styles/testimonials.css';
 import customerImage1 from '../assets/customer1.jpg';
 import customerImage2 from '../assets/customer2.jpg';
 
-const testimonialsData = [
+interface Testimonial {
+    id: number;
+    name: string;
+    rating: number;
+    image: string;
+    comment: string;
+}
+
+const testimonialsData: Testimonial[] = [
     {
         id: 1,
         name: 'John Doe',
@@ -51,7 +58,7 @@ function Testimonials() {
     );
 }
 
-function renderStars(rating) {
+function renderStars(rating: number) {
     const stars = [];
     for (let i = 0; i < rating; i++) {
         stars.push(

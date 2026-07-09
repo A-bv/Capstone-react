@@ -1,7 +1,13 @@
-import React from 'react';
 import '../styles/header.css';
 
-function Header({ title, subtitle, description, imageSrc }) {
+interface HeaderProps {
+    title: string;
+    subtitle: string;
+    description: string;
+    imageSrc: string;
+}
+
+function Header({ title, subtitle, description, imageSrc }: HeaderProps) {
     return (
         <header className="header">
             <div className="header-left">

@@ -1,4 +1,3 @@
-import React from 'react';
 import '../styles/aboutus.css';
 import restaurantInterior from '../assets/teama.jpg';
 import secondImage from '../assets/teamb.jpg';

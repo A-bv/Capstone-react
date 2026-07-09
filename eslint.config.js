@@ -3,10 +3,11 @@ import globals from 'globals';
 import react from 'eslint-plugin-react';
 import reactHooks from 'eslint-plugin-react-hooks';
 import jsxA11y from 'eslint-plugin-jsx-a11y';
+import tseslint from 'typescript-eslint';
 import prettier from 'eslint-config-prettier';
 
-// Flat config (ESLint 9). JSX lives in .js files (CRA legacy), so every
-// source file is treated as JSX-capable.
+// Flat config (ESLint 9). The codebase is migrating from JS to TypeScript, so
+// both .js/.jsx and .ts/.tsx source files are supported here.
 export default [
     { ignores: ['dist/**', 'coverage/**'] },
 
@@ -19,6 +20,7 @@ export default [
 
     { settings: { react: { version: 'detect' } } },
 
+    // JS/JSX: espree parser, classic JSX runtime (these files still import React).
     {
         files: ['**/*.{js,jsx}'],
         languageOptions: {
@@ -32,7 +34,23 @@ export default [
         plugins: { 'react-hooks': reactHooks },
         rules: {
             ...reactHooks.configs['recommended-latest'].rules,
-            // No prop-types / TypeScript in this project by design.
+            'react/prop-types': 'off',
+        },
+    },
+
+    // TS/TSX: typescript-eslint parser + rules.
+    ...tseslint.configs.recommended.map((config) => ({
+        ...config,
+        files: ['**/*.{ts,tsx}'],
+    })),
+    {
+        files: ['**/*.{ts,tsx}'],
+        languageOptions: { globals: { ...globals.browser } },
+        plugins: { 'react-hooks': reactHooks },
+        rules: {
+            ...reactHooks.configs['recommended-latest'].rules,
+            // Automatic JSX runtime — React need not be in scope.
+            ...react.configs.flat['jsx-runtime'].rules,
             'react/prop-types': 'off',
         },
     },
@@ -45,7 +63,7 @@ export default [
 
     // Test files run under Vitest (globals enabled in vite.config.mjs).
     {
-        files: ['**/*.test.{js,jsx}', '**/setupTests.js'],
+        files: ['**/*.test.{js,jsx,ts,tsx}', '**/setupTests.{js,ts}'],
         languageOptions: { globals: { ...globals.browser, ...globals.vitest } },
     },
 

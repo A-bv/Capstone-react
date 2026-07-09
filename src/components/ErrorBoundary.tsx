@@ -1,15 +1,23 @@
-import React from 'react';
+import { Component, type ErrorInfo, type ReactNode } from 'react';
+
+interface Props {
+    children: ReactNode;
+}
+
+interface State {
+    hasError: boolean;
+}
 
 // Catches render-time errors in the tree below it and shows a fallback
 // instead of a blank page. Error boundaries must be class components.
-class ErrorBoundary extends React.Component {
-    state = { hasError: false };
+class ErrorBoundary extends Component<Props, State> {
+    state: State = { hasError: false };
 
-    static getDerivedStateFromError() {
+    static getDerivedStateFromError(): State {
         return { hasError: true };
     }
 
-    componentDidCatch(error, info) {
+    componentDidCatch(error: Error, info: ErrorInfo) {
         // A real app would report this to an error-tracking service.
         console.error('Unhandled UI error:', error, info);
     }
