@@ -1,4 +1,4 @@
-import { initializeTimes, updateTimes } from './Booking';
+import { initializeTimes, updateTimes } from './bookingReducer';
 
 describe('Booking times reducer', () => {
     test('initializeTimes returns a non-empty list of available times', () => {

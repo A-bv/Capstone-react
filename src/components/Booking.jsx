@@ -1,21 +1,9 @@
 import React, { useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BookingForm from './BookingForm';
-import { fetchAPI, submitAPI } from '../api';
+import { initializeTimes, updateTimes } from './bookingReducer';
+import { submitAPI } from '../api';
 import '../styles/booking.css';
-
-// Available times for today, used as the reducer's initial state.
-export const initializeTimes = () => fetchAPI(new Date());
-
-// Recompute available times whenever the selected date changes.
-export const updateTimes = (state, action) => {
-    switch (action.type) {
-        case 'UPDATE_TIMES':
-            return fetchAPI(new Date(action.date));
-        default:
-            return state;
-    }
-};
 
 function Booking() {
     const [availableTimes, dispatch] = useReducer(updateTimes, undefined, initializeTimes);
