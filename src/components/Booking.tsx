@@ -1,15 +1,15 @@
-import React, { useReducer } from 'react';
+import { useReducer } from 'react';
 import { useNavigate } from 'react-router-dom';
 import BookingForm from './BookingForm';
 import { initializeTimes, updateTimes } from './bookingReducer';
-import { submitAPI } from '../api';
+import { submitAPI, type BookingFormData } from '../api';
 import '../styles/booking.css';
 
 function Booking() {
     const [availableTimes, dispatch] = useReducer(updateTimes, undefined, initializeTimes);
     const navigate = useNavigate();
 
-    const submitForm = (formData) => {
+    const submitForm = (formData: BookingFormData): boolean => {
         if (submitAPI(formData)) {
             navigate('/confirmed');
             return true;

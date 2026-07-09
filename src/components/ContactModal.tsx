@@ -1,27 +1,33 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import '../styles/contactmodal.css';
 
-function ContactModal({ onClose }) {
-    const modalRef = useRef(null);
-    const overlayRef = useRef(null);
+interface ContactModalProps {
+    onClose: () => void;
+}
+
+function ContactModal({ onClose }: ContactModalProps) {
+    const modalRef = useRef<HTMLDivElement>(null);
+    const overlayRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const dialog = modalRef.current;
         const overlay = overlayRef.current;
+        if (!dialog || !overlay) return;
+
         // Remember what had focus so we can restore it when the dialog closes.
         const previouslyFocused = document.activeElement;
 
         const focusableSelector =
             'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
-        const handleKeyDown = (e) => {
+        const handleKeyDown = (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
                 onClose();
                 return;
             }
             if (e.key !== 'Tab') return;
             // Trap Tab focus inside the dialog.
-            const focusable = Array.from(dialog.querySelectorAll(focusableSelector));
+            const focusable = Array.from(dialog.querySelectorAll<HTMLElement>(focusableSelector));
             if (focusable.length === 0) {
                 e.preventDefault();
                 return;
@@ -40,7 +46,7 @@ function ContactModal({ onClose }) {
         // Close when the backdrop itself is clicked. Attached here rather than as
         // a JSX onClick because the backdrop is a mouse-only affordance —
         // keyboard users dismiss with Escape or the Close button.
-        const handleOverlayClick = (e) => {
+        const handleOverlayClick = (e: MouseEvent) => {
             if (e.target === overlay) onClose();
         };
 

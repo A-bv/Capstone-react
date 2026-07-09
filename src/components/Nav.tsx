@@ -1,10 +1,14 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, type RefObject } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import '../styles/nav.css';
 import logo from '../assets/Logo.svg';
 import ContactModal from './ContactModal';
 
-function Nav({ aboutUsRef }) {
+interface NavProps {
+    aboutUsRef: RefObject<HTMLDivElement>;
+}
+
+function Nav({ aboutUsRef }: NavProps) {
     const [showModal, setShowModal] = useState(false);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     // A plain flag, not state: flipping it should not trigger a re-render.

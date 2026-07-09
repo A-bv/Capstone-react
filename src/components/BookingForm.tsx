@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import { useState, type ChangeEvent, type Dispatch, type FocusEvent, type FormEvent } from 'react';
 import '../styles/bookingform.css';
+import type { BookingFormData } from '../api';
+import type { TimesAction } from './bookingReducer';
 
 // Local calendar date as YYYY-MM-DD, used to block reservations in the past.
 // Built from local date parts (not toISOString) so it is not shifted by the
@@ -10,6 +12,20 @@ const todayISO = () => {
     const day = String(now.getDate()).padStart(2, '0');
     return `${now.getFullYear()}-${month}-${day}`;
 };
+
+interface InputFieldProps {
+    label: string;
+    id: string;
+    name: string;
+    type: string;
+    value: string | number;
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void;
+    onBlur?: (e: FocusEvent<HTMLInputElement>) => void;
+    required?: boolean;
+    min?: string | number;
+    max?: string | number;
+    error?: string;
+}
 
 const InputField = ({
     label,
@@ -23,7 +39,7 @@ const InputField = ({
     min,
     max,
     error,
-}) => (
+}: InputFieldProps) => (
     <div className="form-group">
         <label htmlFor={id}>{label}:</label>
         <input
@@ -47,6 +63,18 @@ const InputField = ({
     </div>
 );
 
+interface SelectFieldProps {
+    label: string;
+    id: string;
+    name: string;
+    value: string;
+    onChange: (e: ChangeEvent<HTMLSelectElement>) => void;
+    onBlur?: (e: FocusEvent<HTMLSelectElement>) => void;
+    options: string[];
+    error?: string;
+    emptyLabel?: string;
+}
+
 const SelectField = ({
     label,
     id,
@@ -57,7 +85,7 @@ const SelectField = ({
     options,
     error,
     emptyLabel = 'No options available',
-}) => {
+}: SelectFieldProps) => {
     const noOptions = options.length === 0;
     return (
         <div className="form-group">
@@ -92,10 +120,24 @@ const SelectField = ({
     );
 };
 
-const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
+type FormErrors = {
+    name: string;
+    email: string;
+    date: string;
+    time: string;
+    guests: string;
+};
+
+interface BookingFormProps {
+    availableTimes?: string[];
+    dispatch: Dispatch<TimesAction>;
+    submitForm: (formData: BookingFormData) => boolean;
+}
+
+const BookingForm = ({ availableTimes = [], dispatch, submitForm }: BookingFormProps) => {
     const minDate = todayISO();
 
-    const [formData, setFormData] = useState({
+    const [formData, setFormData] = useState<BookingFormData>({
         name: '',
         email: '',
         date: '',
@@ -112,7 +154,7 @@ const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
             ? formData.time
             : (availableTimes[0] ?? '');
 
-    const [errors, setErrors] = useState({
+    const [errors, setErrors] = useState<FormErrors>({
         name: '',
         email: '',
         date: '',
@@ -120,32 +162,38 @@ const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
         guests: '',
     });
 
-    const [touched, setTouched] = useState({});
+    const [touched, setTouched] = useState<Record<string, boolean>>({});
 
     // Validate a single field and return its error message ('' when valid)
-    const validateField = (name, value) => {
+    const validateField = (name: string, value: string | number): string => {
         switch (name) {
             case 'name': {
                 const namePattern = /^[A-Za-z]{2,}$/; // only letters, at least 2 characters
                 return namePattern.test(String(value).trim()) ? '' : 'Name is invalid.';
             }
             case 'email':
-                return /\S+@\S+\.\S+/.test(value) ? '' : 'Email is invalid.';
-            case 'date':
-                if (value === '') return 'Date is required.';
-                if (value < minDate) return 'Date cannot be in the past.';
+                return /\S+@\S+\.\S+/.test(String(value)) ? '' : 'Email is invalid.';
+            case 'date': {
+                const date = String(value);
+                if (date === '') return 'Date is required.';
+                if (date < minDate) return 'Date cannot be in the past.';
                 return '';
+            }
             case 'time':
                 return value ? '' : 'Please choose a time.';
-            case 'guests':
-                return value < 1 || value > 10 ? 'Number of guests must be between 1 and 10.' : '';
+            case 'guests': {
+                const guests = Number(value);
+                return guests < 1 || guests > 10
+                    ? 'Number of guests must be between 1 and 10.'
+                    : '';
+            }
             default:
                 return '';
         }
     };
 
-    const validateForm = () => {
-        const newErrors = {
+    const validateForm = (): boolean => {
+        const newErrors: FormErrors = {
             name: validateField('name', formData.name),
             email: validateField('email', formData.email),
             date: validateField('date', formData.date),
@@ -158,16 +206,16 @@ const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
         return Object.values(newErrors).every((error) => error === '');
     };
 
-    const handleChange = (e) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         const newValue = name === 'guests' ? Number(value) : value;
 
         // Refresh available times when the date changes
-        if (name === 'date' && dispatch) {
+        if (name === 'date') {
             dispatch({ type: 'UPDATE_TIMES', date: value });
         }
 
-        setFormData((prev) => ({ ...prev, [name]: newValue }));
+        setFormData((prev) => ({ ...prev, [name]: newValue }) as BookingFormData);
 
         // Re-validate on change only once the field has been touched
         if (touched[name]) {
@@ -175,15 +223,15 @@ const BookingForm = ({ availableTimes = [], dispatch, submitForm }) => {
         }
     };
 
-    const handleBlur = (e) => {
+    const handleBlur = (e: FocusEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setTouched((prev) => ({ ...prev, [name]: true }));
         setErrors((prev) => ({ ...prev, [name]: validateField(name, value) }));
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        if (validateForm() && submitForm) {
+        if (validateForm()) {
             submitForm({ ...formData, time: selectedTime });
         }
     };

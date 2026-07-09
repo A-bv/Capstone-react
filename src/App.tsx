@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef, type RefObject } from 'react';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -13,7 +13,7 @@ import restaurantFood from './assets/restaurantFood.jpg';
 import wallpaper from './assets/wallpaper.jpg';
 
 function App() {
-    const aboutUsRef = useRef(null);
+    const aboutUsRef = useRef<HTMLDivElement>(null);
 
     return (
         <HashRouter>
@@ -33,7 +33,11 @@ function App() {
     );
 }
 
-function HomePageScreen({ aboutUsRef }) {
+interface HomePageScreenProps {
+    aboutUsRef: RefObject<HTMLDivElement>;
+}
+
+function HomePageScreen({ aboutUsRef }: HomePageScreenProps) {
     return (
         <>
             <Header
