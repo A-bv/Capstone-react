@@ -40,9 +40,10 @@ changing the date requests that day's times.
 ## Roadmap
 
 Done: an error boundary around the routes, the booking reducer split into
-its own module (Fast Refresh), and lazy-loaded below-the-fold images.
+its own module (Fast Refresh), lazy-loaded below-the-fold images, a full
+TypeScript migration (source is 100% TypeScript, type-checked in CI), and
+broader test coverage (nav + contact dialog).
 
 Planned:
 
-1. TypeScript for type-safe props
-2. Surface submit failures in the UI (once the API can actually fail)
+1. Surface submit failures in the UI (once the API can actually fail)

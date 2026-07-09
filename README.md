@@ -8,6 +8,11 @@ A restaurant website built with React: browse the highlights and testimonials, t
 ![React](https://img.shields.io/badge/React-Vite-61DAFB?logo=react&logoColor=black)
 [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey)](LICENSE)
 
+<!-- Add a screenshot of the app: save one to docs/screenshot.png, then
+     uncomment the next line.
+![Little Lemon](docs/screenshot.png)
+-->
+
 ## Features
 
 - **Home page** — hero, daily specials, customer testimonials, and an about section.
