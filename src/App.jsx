@@ -8,6 +8,7 @@ import Testimonials from './components/Testimonials';
 import AboutUs from './components/AboutUs';
 import Booking from './components/Booking';
 import ConfirmedBooking from './components/ConfirmedBooking';
+import ErrorBoundary from './components/ErrorBoundary';
 import restaurantFood from './assets/restaurantFood.jpg';
 import wallpaper from './assets/wallpaper.jpg';
 
@@ -18,12 +19,14 @@ function App() {
         <HashRouter>
             <div className="App">
                 <Nav aboutUsRef={aboutUsRef} />
-                <Routes>
-                    <Route path="/" element={<HomePageScreen aboutUsRef={aboutUsRef} />} />
-                    <Route path="/booking" element={<BookingPage />} />
-                    <Route path="/confirmed" element={<ConfirmedBooking />} />
-                    <Route path="*" element={<Navigate to="/" replace />} />
-                </Routes>
+                <ErrorBoundary>
+                    <Routes>
+                        <Route path="/" element={<HomePageScreen aboutUsRef={aboutUsRef} />} />
+                        <Route path="/booking" element={<BookingPage />} />
+                        <Route path="/confirmed" element={<ConfirmedBooking />} />
+                        <Route path="*" element={<Navigate to="/" replace />} />
+                    </Routes>
+                </ErrorBoundary>
                 <Footer />
             </div>
         </HashRouter>
