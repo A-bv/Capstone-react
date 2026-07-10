@@ -55,9 +55,9 @@ export default [
         },
     },
 
-    // Node context for config files.
+    // Node context for config files and build scripts.
     {
-        files: ['**/*.config.{js,mjs}'],
+        files: ['**/*.config.{js,mjs}', 'scripts/**/*.{js,mjs}'],
         languageOptions: { globals: { ...globals.node } },
     },
 

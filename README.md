@@ -6,12 +6,10 @@ A restaurant website built with React: browse the highlights and testimonials, t
 
 [![CI](https://github.com/A-bv/Capstone-react/actions/workflows/ci.yml/badge.svg)](https://github.com/A-bv/Capstone-react/actions/workflows/ci.yml)
 ![React](https://img.shields.io/badge/React-Vite-61DAFB?logo=react&logoColor=black)
+![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?logo=typescript&logoColor=white)
 [![License: MIT](https://img.shields.io/badge/License-MIT-lightgrey)](LICENSE)
 
-<!-- Add a screenshot of the app: save one to docs/screenshot.png, then
-     uncomment the next line.
-![Little Lemon](docs/screenshot.png)
--->
+![Little Lemon — book a table in the heart of Chicago](public/og-image.png)
 
 ## Features
 

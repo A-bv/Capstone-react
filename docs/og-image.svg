@@ -1,0 +1,57 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#4a5d54" />
+      <stop offset="1" stop-color="#33403a" />
+    </linearGradient>
+    <radialGradient id="glow" cx="0.18" cy="0.12" r="0.95">
+      <stop offset="0" stop-color="#657a70" stop-opacity="0.65" />
+      <stop offset="1" stop-color="#33403a" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="lemon" x1="0.2" y1="0" x2="0.8" y2="1">
+      <stop offset="0" stop-color="#ffe867" />
+      <stop offset="1" stop-color="#f2c015" />
+    </linearGradient>
+    <radialGradient id="lemonHi" cx="0.35" cy="0.28" r="0.65">
+      <stop offset="0" stop-color="#fff7cc" stop-opacity="0.95" />
+      <stop offset="1" stop-color="#fff7cc" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <!-- background -->
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <rect width="1200" height="630" fill="url(#glow)" />
+
+  <!-- decorative rings behind the lemon -->
+  <circle cx="975" cy="300" r="224" fill="#ffffff" opacity="0.04" />
+  <circle cx="975" cy="300" r="174" fill="#ffffff" opacity="0.05" />
+
+  <!-- lemon -->
+  <g transform="translate(975 300) scale(0.82)">
+    <path d="M 44 -158 C 128 -202 202 -156 178 -84 C 116 -62 48 -100 44 -158 Z" fill="#7fae86" />
+    <path d="M 60 -146 C 108 -156 148 -134 160 -98" stroke="#5f8c67" stroke-width="4"
+      fill="none" stroke-linecap="round" />
+    <ellipse cx="0" cy="0" rx="158" ry="182" fill="url(#lemon)" />
+    <ellipse cx="0" cy="-180" rx="15" ry="11" fill="#e2ac0f" />
+    <ellipse cx="0" cy="180" rx="15" ry="11" fill="#e2ac0f" />
+    <ellipse cx="-48" cy="-58" rx="72" ry="96" fill="url(#lemonHi)" />
+  </g>
+
+  <!-- text -->
+  <text x="90" y="150" font-family="Helvetica, Arial, sans-serif" font-size="22"
+    letter-spacing="5" font-weight="700" fill="#bfd0c7">META FRONT-END CAPSTONE</text>
+
+  <text x="86" y="292" font-family="Helvetica, Arial, sans-serif" font-size="106"
+    font-weight="800" fill="#f5d742">Little Lemon</text>
+
+  <text x="92" y="366" font-family="Helvetica, Arial, sans-serif" font-size="38"
+    fill="#edefee">Book a table in the heart of Chicago.</text>
+
+  <text x="92" y="440" font-family="Helvetica, Arial, sans-serif" font-size="27"
+    letter-spacing="1" fill="#cdd8d2">React · TypeScript · Vite · Vitest</text>
+
+  <!-- footer bar -->
+  <line x1="92" y1="540" x2="640" y2="540" stroke="#5c6f66" stroke-width="2" />
+  <text x="92" y="580" font-family="Helvetica, Arial, sans-serif" font-size="24"
+    fill="#a7b8af">a-bv.github.io/Capstone-react</text>
+</svg>
