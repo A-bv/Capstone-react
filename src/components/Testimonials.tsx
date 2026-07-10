@@ -13,21 +13,20 @@ interface Testimonial {
 const testimonialsData: Testimonial[] = [
     {
         id: 1,
-        name: 'John Doe',
+        name: 'Maria Alvarez',
         rating: 5,
         image: customerImage1,
         comment:
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero in mi tempus fermentum.',
+            'The hummus and warm pita were unreal, and the greek salad tasted garden-fresh. A cozy spot in the heart of Chicago — we already booked our next visit.',
     },
     {
         id: 2,
-        name: 'Jane Smith',
+        name: 'James Whitfield',
         rating: 4,
         image: customerImage2,
         comment:
-            'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium.',
+            'Reserved a table for our anniversary and the service was warm and attentive. The lemon dessert was the perfect finish, and booking online took under a minute.',
     },
-    // Add more testimonials as needed
 ];
 
 function Testimonials() {

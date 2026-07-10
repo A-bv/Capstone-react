@@ -73,8 +73,9 @@ function ContactModal({ onClose }: ContactModalProps) {
                 tabIndex={-1}
             >
                 <h2 id="contact-modal-title">Contact Details</h2>
-                <p>Email: contact@littlelemon.com</p>
-                <p>Phone: +1-123-456-7890</p>
+                <p>Address: 405 W Randolph St, Chicago, IL 60606</p>
+                <p>Phone: (312) 555-0148</p>
+                <p>Email: hello@littlelemon.com</p>
                 <button className="close-btn" onClick={onClose}>
                     Close
                 </button>
