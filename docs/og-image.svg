@@ -5,16 +5,8 @@
       <stop offset="1" stop-color="#33403a" />
     </linearGradient>
     <radialGradient id="glow" cx="0.18" cy="0.12" r="0.95">
-      <stop offset="0" stop-color="#657a70" stop-opacity="0.65" />
+      <stop offset="0" stop-color="#657a70" stop-opacity="0.6" />
       <stop offset="1" stop-color="#33403a" stop-opacity="0" />
-    </radialGradient>
-    <linearGradient id="lemon" x1="0.2" y1="0" x2="0.8" y2="1">
-      <stop offset="0" stop-color="#ffe867" />
-      <stop offset="1" stop-color="#f2c015" />
-    </linearGradient>
-    <radialGradient id="lemonHi" cx="0.35" cy="0.28" r="0.65">
-      <stop offset="0" stop-color="#fff7cc" stop-opacity="0.95" />
-      <stop offset="1" stop-color="#fff7cc" stop-opacity="0" />
     </radialGradient>
   </defs>
 
@@ -22,19 +14,30 @@
   <rect width="1200" height="630" fill="url(#bg)" />
   <rect width="1200" height="630" fill="url(#glow)" />
 
-  <!-- decorative rings behind the lemon -->
-  <circle cx="975" cy="300" r="224" fill="#ffffff" opacity="0.04" />
-  <circle cx="975" cy="300" r="174" fill="#ffffff" opacity="0.05" />
-
-  <!-- lemon -->
-  <g transform="translate(975 300) scale(0.82)">
-    <path d="M 44 -158 C 128 -202 202 -156 178 -84 C 116 -62 48 -100 44 -158 Z" fill="#7fae86" />
-    <path d="M 60 -146 C 108 -156 148 -134 160 -98" stroke="#5f8c67" stroke-width="4"
+  <!-- lemon (brand style: flat body, grey leaves), scaled up for a close-up feel -->
+  <g transform="translate(955 320)">
+    <!-- leaves (grey), drawn first so the body tucks over their base -->
+    <g fill="#525c54" stroke="#3d453f" stroke-width="3" stroke-linejoin="round">
+      <path d="M -10 -180 C -74 -226 -120 -262 -152 -308 C -112 -300 -60 -262 -14 -196 Z" />
+      <path d="M 20 -184 C 46 -230 96 -252 138 -250 C 116 -206 70 -184 32 -178 Z" />
+    </g>
+    <path d="M -26 -196 C -74 -232 -112 -266 -142 -300" stroke="#3d453f" stroke-width="5"
       fill="none" stroke-linecap="round" />
-    <ellipse cx="0" cy="0" rx="158" ry="182" fill="url(#lemon)" />
-    <ellipse cx="0" cy="-180" rx="15" ry="11" fill="#e2ac0f" />
-    <ellipse cx="0" cy="180" rx="15" ry="11" fill="#e2ac0f" />
-    <ellipse cx="-48" cy="-58" rx="72" ry="96" fill="url(#lemonHi)" />
+    <path d="M 40 -182 C 68 -210 100 -226 126 -234" stroke="#3d453f" stroke-width="5"
+      fill="none" stroke-linecap="round" />
+
+    <!-- body -->
+    <path d="M 6 -214 C 110 -216 170 -118 170 -4 C 170 120 116 222 4 232
+             C -108 222 -170 120 -170 -4 C -170 -120 -98 -212 6 -214 Z"
+      fill="#f2d13f" stroke="#d9b12a" stroke-width="4" />
+    <!-- soft lower shading for a hint of form -->
+    <path d="M -154 70 C -92 186 96 186 158 70 C 156 168 88 230 4 232
+             C -84 230 -150 164 -154 70 Z" fill="#e4bd2f" opacity="0.5" />
+    <!-- gentle top-left highlight -->
+    <ellipse cx="-56" cy="-98" rx="70" ry="104" fill="#f8e06c" opacity="0.55" />
+    <!-- nubs -->
+    <ellipse cx="6" cy="-214" rx="14" ry="10" fill="#d7ac26" />
+    <ellipse cx="4" cy="232" rx="13" ry="9" fill="#d7ac26" />
   </g>
 
   <!-- text -->
@@ -50,7 +53,7 @@
   <text x="92" y="440" font-family="Helvetica, Arial, sans-serif" font-size="27"
     letter-spacing="1" fill="#cdd8d2">React · TypeScript · Vite · Vitest</text>
 
-  <!-- footer bar -->
+  <!-- footer -->
   <line x1="92" y1="540" x2="640" y2="540" stroke="#5c6f66" stroke-width="2" />
   <text x="92" y="580" font-family="Helvetica, Arial, sans-serif" font-size="24"
     fill="#a7b8af">a-bv.github.io/Capstone-react</text>
